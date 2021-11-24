@@ -36,7 +36,6 @@ app.use(
   }),
 );
 app.use(flash());
-
 app.use(morgan('combined'))
 //parse application/json
 app.use(express.json());

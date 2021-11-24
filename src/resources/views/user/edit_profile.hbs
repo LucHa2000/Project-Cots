@@ -37,14 +37,13 @@
     {{>header}}
     <main id="main " class="subpage-main account-settings-page">
       <div class="container">
-
             <h2 class="title">We respect your privacy</h2>
           <div 
           class="main-account-settings-container">
             <div class="d-flex">
               <div class="left">
                 <div class="user-pf-img">
-                  <img src="https://th.bing.com/th/id/R.22770dc6386fd8a268bb10d36f2a7f77?rik=sRUyHyu4RMa66Q&riu=http%3a%2f%2frealidadessperiodico.com%2fwp-content%2fuploads%2f2020%2f06%2favtars.jpg&ehk=Nzd2s%2ffmQV9WOnxDgQNhbkQUzVIv0OdzIFYWWoTg140%3d&risl=&pid=ImgRaw&r=0" alt="">
+                  <img src="../uploads/{{account.avatar}}" alt="Avatar">
                 </div>
                 <span class="user-fullname">{{accounts.full_name}}</span>
                 <a href="/user_account/view" class="collection-item  is-active first-child">Account Settings</a>
@@ -52,21 +51,21 @@
                 <a href="/auth/logout" class="collection-item">Logout</a>
               </div>
               <div class="right">
-                <form class="col s12"  method="POST" action="/user_account/update/{{account._id}}/edit?_method=PATCH">
+                <form class="col s12"  method="POST"  action="/profile/update" enctype="multipart/form-data">
                   <div class="row">
                     <div class="col s6 m6 ">
                       <div class="lbl-notation">
-                        <span>User Name</span>
+                        <span>First Name</span>
                         <span class="notation">How do you want to be called?</span>
                       </div>
-                      <input  id="full_name" type="text" class="validate" name="full_name" value="{{account.full_name}}">
+                      <input  id="first_name" type="text" class="validate" name="first_name" value="{{account.first_name}}">
                     </div>
                     <div class=" col s6 m6 ">
                       <div class="lbl-notation">
-                        <span>Major</span>  
-                        <span class="notation">For information</span>
+                        <span>Last Name</span>  
+                        <span class="notation">How do you want to be called?</span>
                       </div>
-                      <input id="major" type="text" class="validate" name="major" value="" required="required">
+                      <input id="last_name" type="text" class="validate" name="last_name" value="{{account.last_name}}" required="required">
                       <span class="helper-text" data-error="This field must be text" data-success=""></span>
                     </div>
                   </div>
@@ -77,8 +76,21 @@
                         <span class="notation">For logging in</span>
                       </div>
                       <input type="email" class="validate" name="email" value="{{account.email}}" required="required">
-                      <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+                      <span class="helper-text" data-error="This field must be email" data-success=""></span>
                     </div>
+                  </div>
+                  <div class="row">
+                    <div class="file-field input-field col s5">
+                     <img src="../uploads/{{account.avatar}}"alt="Avatar" class="responsive-img list-img">
+                     <br>
+                     <div class="btn">
+                     <span>Avatar</span>
+                     <input type="file" name="image">
+                         </div>
+                        <div class="file-path-wrapper">
+                         <input class="file-path validate" type="text" value="{{account.avatar}}" name="img_old">
+                       </div>
+                       </div>
                   </div>
                   <div class="row">
                     <div class=" col s12 m12 ">
@@ -96,21 +108,19 @@
                         <span>Birthday</span>
                         <span class="notation">For information</span>
                       </div>
-                      <input type="text" class="datepicker" name="birthday">
+                      
+                      <input type="text" class="datepicker" name="birthday" value="{{ convertDate account.birthday}}">
                       <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
                     </div>
                   </div>
-                      <div class="row">
+                    <div class="row" hidden>
                     <div class=" col s12 m12 ">
                       <div class="lbl-notation">
                         <span>Gender</span>
                         <span class="notation">For information</span>
                       </div>
-                     <select >
-         
-                           <option value="mate">Mate</option>
-                          <option value="femate">Femate</option>
-                         
+                     <select name="gender" id="gender">
+                      <option value="{{account.gender}}">{{account.gender}}</option>
                      </select>
                       <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
                     </div>
@@ -121,26 +131,19 @@
                         <span>Password</span>
                         <span class="notation">For logging in</span>
                       </div>
-                      <input id="password" type="password" class="validate" name="password" value="{{account.password}}">
+                      <input id="password" type="password" class="validate" name="password" value="{{account.acc_password}}">
+                       <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
                     </div>
                   </div>
                   <div class="row">
                     <div class=" col s12 m12 ">
                       <div class="lbl-notation">
-                        <span>Address</span>
-                        <span class="notation">For receiving your orders</span>
+                        <span>Job</span>
+                        <span class="notation">For Information</span>
                       </div>
-                      <input id="address" type="Text" class="validate" name="address" value="{{account.address}}">
+                      <input id="address" type="Text" class="validate" name="job" value="{{account.job}}">
                     </div>
                   </div>
-                  {{!-- <div class="row">
-                    <div class=" col s12 ">
-                      <input id="password"type="Text" class="validate" name="password" value="{{accounts.password}}" required="required"/>
-                      r
-                      <label for="password">Password</label>
-                      <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
-                    </div>
-                  </div> --}}
                   <button onclick="return confirm('Are you sure update ?')" class="btn btn-active" type="submit">Update</button>
                 </form>
               </div>
