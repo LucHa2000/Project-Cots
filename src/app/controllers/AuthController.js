@@ -8,7 +8,6 @@ class AuthController {
     res.render('auth/login', {
       error_message: req.cookies.error_message,
       message  : req.cookies.message
-      
     });
     res.clearCookie('error_message');
     res.clearCookie('message');
@@ -17,18 +16,27 @@ class AuthController {
   login(req, res, next) {
       let username =  req.body.username.trim()
       let password = req.body.password.trim()
-      db.execute(Account.findByTag("username",username),(err,result)=>{    
+      db.execute(Account.findByTag("username",username),(err,result)=>{ 
+        
         if(req.body['g-recaptcha-response']){
           if(result.length === 0 || result[0].acc_status != 1) {
-            // console.log("account not exists")
-            res.cookie('error_message', 'The account does not exist yet');
+
+          res.cookie('error_message', 'The account does not exist yet');
           res.redirect('back');
+          
           }
           else{
-
-            if( result[0].password === password ){
+      
+            if( result[0].acc_password == password ){
               res.cookie('username', result[0].username);
-              res.redirect('/')
+              res.cookie('author', true);
+                if(result[0].acc_type_id == 2){
+                  console.log(result[0])
+                  res.redirect('/newsfeed')
+                }
+                else{
+                  res.redirect('/admin')
+                }
             }
             else{
               res.cookie('error_message', 'Wrong password !');
@@ -40,7 +48,6 @@ class AuthController {
           res.cookie('error_message', ' Please check capcha !');
           res.redirect('back')
         }  
-      
       })
 
   }
@@ -57,21 +64,32 @@ class AuthController {
   }
   //auth [put] / register
   register(req, res, next) {
-
-   
     if(req.cookies.confirmMail=='true'){
-      if (req.body.password != '' && req.body.username) {
-        let avatar = "image"
+      if (req.body.acc_password != '' && req.body.username) {
+        let avatar = "avatar-nomal.png"
         let username = req.body.username
-        let password = req.body.password
+        let acc_password = req.body.password
         let email = req.session.email
-        let acc_type = 1 
+        let first_name =""
+        let last_name = ""
+        let birthday = "2000-02-02"
+        let job = ""
+        let bio = ""
+        let gender = 1
+        let acc_type_id = 2 
         let acc_status = 1
-        let newAccount= new Account(username,password,email,avatar,acc_type,acc_status)
-        newAccount.save()
-    
-        res.cookie('message', 'Resister successful');
-        res.redirect('/auth');
+        db.execute(Account.findByTag("username",username),function(err,result){
+          if(result.length != 0){
+            res.redirect('/error')
+          }
+          else{
+            let newAccount= new Account(username,acc_password,email,first_name,last_name,birthday,gender,bio,job,acc_status,acc_type_id,avatar)
+            newAccount.save()
+            res.cookie('message', 'Resister successful');
+            res.redirect('/auth');
+          }
+        })
+       
       }
     }
     else{
@@ -79,10 +97,7 @@ class AuthController {
     }
   
   }
-
   pageCode(req, res, next) {
-    // res.clearCookie('error');
-    // res.cookie('code', req.cookies.code);
     console.log(req.session.code)
     res.render('auth/confirmEmail_view', {
       error: req.cookies.error,
@@ -130,8 +145,7 @@ class AuthController {
           res.cookie('error_email', 'The account already exists');
           res.redirect('back');
         }        
-      })
-    
+      }) 
   }
   pageForgotPassword(req, res, next) {
     res.render('auth/forgotPassword', {
@@ -154,7 +168,7 @@ class AuthController {
       }
       else{
         let username = result[0].username 
-        let password = result[0].password
+        let password = result[0].acc_password
         var transporter = nodemailer.createTransport({
           host: 'smtp.gmail.com',
           port: 587,
@@ -179,12 +193,8 @@ class AuthController {
     })
   }
   logout(req, res, next) {
-    res.clearCookie('userId');
-    res.clearCookie('userEmail');
-    res.clearCookie('userName');
-    res.clearCookie('accountType');
-    res.clearCookie('author');
-    res.clearCookie('totalQty');
+    res.clearCookie("username");
+    res.clearCookie("author");
     res.redirect('/');
   }
 }

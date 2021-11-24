@@ -1,22 +1,9 @@
 require("dotenv").config()
 const mysql = require("mysql2")
-
-
 const pool = mysql.createPool({
     host: "localhost" ,
-    user: "root",
+    user: "cots",
     database: "webchat",
-    password: "luc123"
+    password: "cots1234"
 })
-// let sql = "SELECT * FROM posts;"
-// pool.execute(sql,function(err,result){
-//     if(err) throw err
-//     result.forEach((res)=>{
-//         console.log(res.title)
-//     })
-    
-// })
-
 module.exports = pool
-//module.exports = { connect };
-//module.exports = pool.promise
