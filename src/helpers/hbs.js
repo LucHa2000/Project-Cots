@@ -4,7 +4,7 @@ module.exports = {
   mergeName: (a, b) => (a+" "+b),
   convertDate: (a) => moment(a).format('YYYY-MM-DD'),
   sum: (a) => (a == a ? a + 1 : a), //create helpers
-  convertGender: (a) => (a == 1 ? 'Mate' : 'Femate'),
+  convertGender: (a) => (a == 1 ? 'Male' : 'Female'),
   status: (a) => (a == 1 ? 'Activity' : 'Block'),
   followCustomer : (a) => (a== 1 ? 'unfollow' : 'follow'),
   order_status: (a) => {
