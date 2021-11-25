@@ -83,7 +83,6 @@ body {
 
 /* Message Css*/
 .message-info {
-  
 }
 .button-radius {
 }
@@ -1543,6 +1542,118 @@ section .more {
   margin-bottom: 20px;
   border-radius: 15px !important;
 }
-.shortcuts{
-  max-width:250px;
+.shortcuts {
+  max-width: 250px;
+}
+
+/* homepage */
+:root {
+  --orange: #ffa500;
+}
+.btn {
+  display: inline-block;
+  margin: auto;
+  background: var(--orangee);
+  color: #000000;
+  padding: 0.8rem 3rem;
+  border: 0.1rem solid var(--orange);
+  cursor: pointer;
+  font-size: 22px;
+  height: 56px;
+  font-weight: 500;
+  border-radius: 32px;
+}
+
+.btn:hover {
+  background: var(--orange);
+  color: #fff;
+}
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  position: relative;
+  z-index: 0;
+  background-image: url("/images/homePage.jpg");
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+  box-shadow: 0px 5px 8px rgb(0 0 0 / 30%) !important;
+}
+
+.home .content {
+  text-align: center;
+  margin-bottom: 400px;
+}
+
+.home .content h3 {
+  color: #000000;
+  text-transform: uppercase;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.1);
+  font-size: 9vw;
+  font-weight: 600;
+  opacity: 10 !important;
+}
+.review .review-slider {
+  padding-bottom: 2rem;
+}
+
+.review .box {
+  padding: 4rem;
+  margin: 5px;
+  text-align: center;
+  box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+.review .box img {
+  height: 13rem;
+  width: 13rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.review .box h3 {
+  color: #333;
+  font-size: 2.5rem;
+}
+
+.review .box p {
+  color: #666;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+}
+
+.review .box .stars i {
+  color: var(--orange);
+  font-size: 1.7rem;
+}
+*::selection {
+  background: var(--orange);
+  color: #fff;
+}
+.heading span {
+  font-size: 3.5rem;
+  background: rgba(255, 165, 0, 0.2);
+  color: var(--orange);
+  border-radius: 0.5rem;
+  padding: 0.2rem 1rem;
+  border: 0.1rem solid var(--orange);
+}
+
+.heading span.space {
+  background: none;
+}
+.heading {
+  text-align: center;
+  padding: 2.5rem 0;
+}
+.swiper-wrapper {
+  display: flex;
 }
