@@ -1,3 +1,59 @@
+<div class="auth-bg">
+  <div class="auth-container">
+    <div class="left">
+      <div class="left-inner-container">
+        <div class="left-head">
+          <div class="left-card"><a href="/">
+              <span style="font-weight: 600;">INDOMINUS</span><br />NETWORK</a>
+          </div>
+          <hr class="left-hr" />
+          <div class="left-title">
+            <p class="sm-title">We are</p>
+            <h2 class="main-title">Invite only right now.</h2>
+            <p class="subtitle">10 Million+ people have joined our network.<br
+              />We invite you to join the trible</p>
+          </div>
+        </div>
+        <div class="left-foot">
+          <p>Already have an account?</p>
+          <a href="/auth">Sign in</a>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="right-inner-container">
+        <form action="/auth/sendMail" method="POST">
+          <h4>Sign up</h4>
+          <label class="label" for="confirmEmail">Email</label>
+          <input
+            id="confirmEmail"
+            type="email"
+            class="validate"
+            name="confirmEmail"
+            required
+          />
+          <span
+            class="helper-text"
+            data-error="This field cannot be left blank"
+            data-success=""
+          ></span>
+          <div class="col s10 m10 push-l1" style="">
+            {{#if error_email}}
+              <div class="isa_error message-info">
+                <i class="fa fa-times-circle"></i>
+                <span>{{error_email}}</span>
+              </div>
+            {{/if}}
+          </div>
+          <button class="btn-active btn-login" type="submit">Sign up
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- 
 <div class="auth_container">
   <div class="container">
     <div class="row">
@@ -26,11 +82,11 @@
           </div>
           <div class="row">
             <div class="input-field col s10 m10 push-l1">
-              {{#if error_email }}
-              <div class="isa_error message-info">
-                <i class="fa fa-times-circle"></i>
-                <span>{{error_email}}</span>
-              </div>
+              {{#if error_email}}
+                <div class="isa_error message-info">
+                  <i class="fa fa-times-circle"></i>
+                  <span>{{error_email}}</span>
+                </div>
               {{/if}}
             </div>
           </div>
@@ -53,4 +109,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}

@@ -1,7 +1,7 @@
-<nav id="navbar" class="navbar sticky">
-  <a href="/newsfeed" class="navbar-brand">
-    {{!-- <img src="../img/pills.svg" alt="" class="logo" /> --}}
-   Chat chit
+<nav id="navbar" class="navbar">
+  <a href="/newsfeed" class="navbar-brand brand">
+    {{! <img src="../img/pills.svg" alt="" class="logo" /> }}
+    INDOMINUS<br />NETWORK
   </a>
   <a href="#" data-target="mobile-demo" class="nav-link sidenav-trigger"><i
       class="material-icons"
@@ -14,38 +14,39 @@
       <li class="nav-item">
         <a href="/logout" class="nav-link">Logout</a>
       </li>
-      <li class="nav-item">
-        <a href="/about/view" class="nav-link">About Us</a>
-      </li>
     </ul>
-    
+
   </div>
   <div class="right">
     <div class="search-block">
-           <form class="col s12" method="POST" action="/find" >
-      <div class="row">
-        <div style="margin-top:5px" class="input-field col s8">
-          {{!-- <i class="material-icons prefix">search</i> --}}
-          <input type="text" id="myInput" class="validate" name="search">
-          <label for="myInput">Search...</label>
-         
+      <form class="col s12" method="POST" action="/find">
+        <div class="row">
+          <div style="margin-top:5px" class="input-field col s8">
+            {{! <i class="material-icons prefix">search</i> }}
+            <input type="text" id="myInput" class="validate" name="search" />
+            <label for="myInput">Search...</label>
+
+          </div>
+          <div class="input-field col s4">
+            <button
+              type="submit"
+              style="margin-top:20px"
+              class="btn btn-primary"
+            >Search</button>
+          </div>
         </div>
-        <div class="input-field col s4">
-           <button type="submit" style="margin-top:20px" class="btn btn-primary">Search</button>
-        </div>
-      </div>
-    </form>
+      </form>
     </div>
 
-    {{!-- <a href="#" class="nav-link material-icons"> search </a> --}}
+    {{! <a href="#" class="nav-link material-icons"> search </a> }}
     {{! <a href="/cart" id="cart-btn" class="nav-link material-icons">
       shopping_bag
     </a> }}
-    
+
     <div class="auth_user" style="display: flex">
 
       {{!-- {{#if author}} --}}
-        {{!-- <a
+      {{! <a
           class="nav-link dropdown-trigger btn"
           href="#"
           data-target="dropdown1"
@@ -55,10 +56,10 @@
             class="circle"
             src="https://bigpicturelabs.io/img/team/1.jpg"
           />
-        </a> --}}
+        </a> }}
       {{!-- {{else}} --}}
-        {{!-- <a href="/auth" class="nav-link">Login</a>
-        <a href="/auth/signup_email" class="nav-link">Signup</a> --}}
+      {{! <a href="/auth" class="nav-link">Login</a>
+        <a href="/auth/signup_email" class="nav-link">Signup</a> }}
       {{!-- {{/if}} --}}
       <!-- Dropdown Structure -->
     </div>
