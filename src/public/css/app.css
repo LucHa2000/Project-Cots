@@ -517,6 +517,10 @@ body {
   display: inline-block;
 }
 
+.auth-container .left-inner-container .left-card a {
+  color: #fff !important;
+}
+
 .auth-container .left-inner-container .left-hr {
   margin: 20px 0;
   width: 70px;
