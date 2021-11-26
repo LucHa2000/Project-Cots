@@ -50,8 +50,16 @@ app.engine(
 );
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
+
+// Router
+route(app)
+//socket io in server
+io.on('connection',(socket) => {
+  console.log('have a connect ID :'+ socket.id);
+  socket.on('disconnect',() =>{
+    console.log(socket.id + " disconnected !")
+})
+})
 server.listen(port, () => {
   console.log(` Server run at http://localhost:${port}`)
 })
-// Router
-route(app)

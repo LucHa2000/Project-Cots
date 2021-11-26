@@ -1,5 +1,11 @@
 
+    <script src ="../../../public/script/inbox.js"></script>
+  <script src="socket.io/socket.io.js"></script>
+  <script>$('#txtSendMessage').click(()=>{
+    alert("click !")
+})</script>
   {{>header}}
+
   <div class="container">
     <div class="row">
       <div class="col s6 m3 ">
@@ -33,9 +39,8 @@
                     <div class="message">
                        {{!-- <label for="textarea1">Message</label> --}}
                       <textarea placeholder="message" id="textarea1" class="materialize-textarea"></textarea> 
-                  <button class=" right waves-effect waves-light btn">Send</button>
+                  <button id="txtSendMessage" class="waves-effect waves-light btn-small right">Send</button>
                     </div>
-                  
                  </div>
                 </div>
             </form>
@@ -49,6 +54,8 @@
       </div>
     </div>
   </div>
+
+
  
 
     
