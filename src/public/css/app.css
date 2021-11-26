@@ -305,13 +305,14 @@ body {
 .navbar-brand {
   color: #000;
   font-weight: bold;
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
+  font-size: 1rem;
+  /* display: flex; */
+  /* align-items: center; */
+  line-height: 1.2;
 }
 
 .logo {
-  width: 50px;
+  /* width: 50px; */
 }
 
 .brand {
