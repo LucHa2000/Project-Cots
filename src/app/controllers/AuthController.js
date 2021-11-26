@@ -98,7 +98,7 @@ class AuthController {
   
   }
   pageCode(req, res, next) {
-    console.log(req.session.code)
+    res.clearCookie("error");
     res.render('auth/confirmEmail_view', {
       error: req.cookies.error,
      message: "Check your email"
