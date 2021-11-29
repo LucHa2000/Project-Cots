@@ -24,7 +24,7 @@
       <div class="card center">
         <div class="card-content">
           <div class="row">
-             <form class="col s12">
+           
                <div class="row">
                 <div class="col s3">
                    <ul class="collection with-header">
@@ -37,18 +37,26 @@
                     </ul>
                 </div>
                 <div class="input-field col s8 container-chat" >
-                       <button id="close-boxchat" class="waves-effect waves-light btn-small right">Close</button>
-                    <div class="card chatbox">
+                   <p id="username" hidden>{{account}}</p>
+                       <button type="submit"  id="close-boxchat" class="waves-effect waves-light btn-small right">Close</button>
+                    <div class="card chatbox" style="">
                         <h1>Chat Box</h1>
+                          <div id="chat-content" class="left"> 
+
+                                <p id="notification-focus">       
+                              </p>        
+                          </div>
+                    
+                          
                     </div>
                     <div class="message">
                        {{!-- <label for="textarea1">Message</label> --}}
-                      <textarea placeholder="message" id="textarea1" class="materialize-textarea"></textarea> 
-                  <button id="txtSendMessage" class="waves-effect waves-light btn-small right">Send</button>
+                      <textarea placeholder="message" id="message-inbox" class="materialize-textarea"></textarea> 
+                  <button id="send-message" class="waves-effect waves-light btn-small right">Send</button>
                     </div>
                  </div>
                 </div>
-            </form>
+           
           </div>
         </div>
       </div>

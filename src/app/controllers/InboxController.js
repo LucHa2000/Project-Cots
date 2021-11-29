@@ -7,7 +7,7 @@ class InboxController {
      index(req, res, next){
          let username = req.cookies.username
         db.execute(Follow.findByTag("username",username),(err, result) => {
-            res.render('user/inbox',{follower : result})
+            res.render('user/inbox',{follower : result ,account : username}  )
             // console.log(Account)
         })
   

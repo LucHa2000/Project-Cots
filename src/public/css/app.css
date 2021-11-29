@@ -1022,3 +1022,19 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+/* ib css  */
+.image-infor-focus{
+  height: 30px;
+  width: 50px;
+}
+.text-message{
+  color :black;
+  
+}
+.nameUser{
+  color: red;
+}
+#notification-focus{
+  text-align: justify;
+  text-align-last: justify;
+}

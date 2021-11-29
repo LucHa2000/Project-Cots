@@ -50,9 +50,6 @@ app.engine(
 );
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
-
-// Router
-
 //socket io in server
 server.listen(port, () => {
   console.log(` Server run at http://localhost:${port}`)
@@ -62,18 +59,29 @@ const usersId = []
 //check connect 
 io.on('connection',(socket) => {
     console.log('have a connect ID :'+ socket.id);
-    //get user name
     socket.on('disconnect',() =>{
       console.log(socket.id + " disconnected !")
   })
+  // listening  username
     socket.on('user-name',(data)=>{
-
-      // console.log(data)
+       arrayUser.push(data)
+       socket.Username = data
+       usersId[data] = socket.id
+       socket.emit('Server-success-regsiter', data)  
     })
-    //get user id
-    socket.on('user-id',(data)=>{
-      console.log(data)
+    //listening content
+    socket.on('content-message',(data)=>{
+      var socketId  = usersId[data.receiver]
+      io.to(socketId).emit('new-message-private',data)
+       
     })
-
+     //listening user write
+     socket.on('user-writing',(data)=>{
+      socket.broadcast.emit('server-send-user-write',data)
+  })
+    //stop listening user write
+    socket.on('user-write-stop',(data)=>{
+     io.sockets.emit('server-send-user-write-stop')
+  })
   })
 route(app)
