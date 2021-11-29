@@ -12,5 +12,8 @@ class InboxController {
         })
   
     }
+    test(req,res,next){
+        res.render('user/inbox_test')
+    }
 }
 module.exports = new InboxController()

@@ -1,9 +1,13 @@
 
     <script src ="../../../public/script/inbox.js"></script>
   <script src="socket.io/socket.io.js"></script>
-  <script>$('#txtSendMessage').click(()=>{
-    alert("click !")
-})</script>
+  <script src = "./script/inbox.js">
+ </script>
+ <style>
+   .collection-item{
+     cursor: pointer;
+   }
+ </style>
   {{>header}}
 
   <div class="container">
@@ -28,11 +32,12 @@
                           <h4>Friends</h4>
                           </li>
                           {{#each follower}}
-                        <li class="collection-item"><div>{{this.follower_username}}<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+                        <li  class="collection-item">{{this.follower_username}}</li>
                           {{/each}}
                     </ul>
                 </div>
-                <div class="input-field col s8">
+                <div class="input-field col s8 container-chat" >
+                       <button id="close-boxchat" class="waves-effect waves-light btn-small right">Close</button>
                     <div class="card chatbox">
                         <h1>Chat Box</h1>
                     </div>

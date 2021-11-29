@@ -11,7 +11,7 @@ const mysql =require('mysql')
 const route =  require('./routes')
 const port = process.env.PORT || 5000
 const server = require('http').Server(app);
-const io = require('socket.io')(server)
+var io = require('socket.io')(server)
 const nodemailer = require('nodemailer');
 require('dotenv').config()
 
@@ -52,14 +52,28 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
 
 // Router
-route(app)
+
 //socket io in server
-io.on('connection',(socket) => {
-  console.log('have a connect ID :'+ socket.id);
-  socket.on('disconnect',() =>{
-    console.log(socket.id + " disconnected !")
-})
-})
 server.listen(port, () => {
   console.log(` Server run at http://localhost:${port}`)
 })
+const arrayUser = []
+const usersId = []
+//check connect 
+io.on('connection',(socket) => {
+    console.log('have a connect ID :'+ socket.id);
+    //get user name
+    socket.on('disconnect',() =>{
+      console.log(socket.id + " disconnected !")
+  })
+    socket.on('user-name',(data)=>{
+
+      // console.log(data)
+    })
+    //get user id
+    socket.on('user-id',(data)=>{
+      console.log(data)
+    })
+
+  })
+route(app)
