@@ -75,6 +75,11 @@ io.on('connection',(socket) => {
       io.to(socketId).emit('new-message-private',data)
        
     })
+    //listening emotion
+    socket.on('content-emotion',(data)=>{
+      var socketId  = usersId[data.receiver]
+      io.to(socketId).emit('new-message-private-emotion',data)
+    })
      //listening user write
      socket.on('user-writing',(data)=>{
       socket.broadcast.emit('server-send-user-write',data)

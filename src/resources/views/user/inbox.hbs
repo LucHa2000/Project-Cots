@@ -52,7 +52,8 @@
                     <div class="message">
                        {{!-- <label for="textarea1">Message</label> --}}
                       <textarea placeholder="message" id="message-inbox" class="materialize-textarea"></textarea> 
-                  <button id="send-message" class="waves-effect waves-light btn-small right">Send</button>
+                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Icon</a>
+                      <button id="send-message" class="waves-effect waves-light btn-small right">Send</button>
                     </div>
                  </div>
                 </div>
@@ -68,6 +69,23 @@
     </div>
   </div>
 
+  <!-- Modal Trigger -->
+  
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Emoticon</h4>
+      <img class='image-emotion' src='../emoticon/angry-face-with-horns_1f47f.png' >"
+            <img class='image-emotion modal-close'  src='../emoticon/face-holding-back-tears_1f979.png' >"
+            <img class='image-emotion modal-close' src='../emoticon/smiling-face-with-heart-eyes_1f60d.png' >"
+            <img class='image-emotion modal-close' src='../emoticon/hot-face_1f975.png' >"
+           
+    </div>
+    <div class="modal-footer">\
+     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 
  
 

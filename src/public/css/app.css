@@ -1038,3 +1038,6 @@ body {
   text-align: justify;
   text-align-last: justify;
 }
+.image-emotion{
+  cursor: pointer;
+}

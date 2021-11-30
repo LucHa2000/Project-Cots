@@ -3,8 +3,15 @@
  
    var receiver = ""
    var sender = ""
+   //listening private emotion
+   socket.on("new-message-private-emotion",(data)=>{
+    $(".container-chat").show()
+    receiver =  data.sender
+    $('#chat-content').append('<h6 class="nameUser">'+data.sender+':'+ '<img class="image-infor-focus" src=' + data.message +'></h6>')
+   })
    //listening private message
    socket.on("new-message-private",(data)=>{
+  
     $(".container-chat").show()
     receiver =  data.sender
     $('#chat-content').append('<h6 class="nameUser">'+ data.sender+':'+'<span class="text-message">'+ data.message+'</span></h6>')
@@ -49,6 +56,18 @@
            // stop focusout input
           $('#message-inbox').focusout(()=>{
             socket.emit('user-write-stop')
+        })
+        //
+        
+          $(".image-emotion").click(function(event){
+           var message  = $(this).attr('src')
+           socket.emit("content-emotion",{ 
+             message  : message,
+             receiver  : receiver,
+             sender : sender
+           })
+           $('#chat-content').append('<h6 class="nameUser">'+"Me"+':'+ '<img class="image-infor-focus" src=' + message +'></h6>')
+            // $("#modal1").hide()
         })
         })
      
