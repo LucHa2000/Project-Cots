@@ -1,60 +1,4 @@
 
-<<<<<<< HEAD
-    <script src ="../../../public/script/inbox.js"></script>
-  <script src="socket.io/socket.io.js"></script>
-  <script src = "./script/inbox.js">
- </script>
- <style>
-   .collection-item{
-     cursor: pointer;
-   }
- </style>
-  {{>header}}
-
-  <div class="container-user">
-    <div class="row">
-      <div class="col m12">
-         <div class="mid-home ">
-      <div class="row">
-    <div class="col s6 m12">
-      <div class="card center">
-        <div class="card-content">
-          <div class="row">
-               <div class="row">
-                <div class="col s3">
-                   <ul class="collection with-header">
-                        <li class="collection-header">
-                          <h4>Friends</h4>
-                          </li>
-                          {{#each follower}}
-                        <li  class="collection-item">{{this.follower_username}}</li>
-                          {{/each}}
-                    </ul>
-                </div>
-                <div class="input-field col s8 container-chat" >
-                   <p id="username" hidden>{{account}}</p>
-                       <button type="submit"  id="close-boxchat" class="waves-effect waves-light btn-small right">Close</button>
-                    <div class="card chatbox" style="">
-                        {{!-- <h1>Chat Box</h1> --}}
-                          <div id="chat-content" class="left"> 
-                                <p id="notification-focus">       
-                              </p>        
-                          </div>
-                    
-                          
-                    </div>
-                    <div class="message">
-                       {{!-- <label for="textarea1">Message</label> --}}
-                      <textarea placeholder="message" id="message-inbox" class="materialize-textarea"></textarea> 
-                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Icon</a>
-                      <button id="send-message" class="waves-effect waves-light btn-small right">Send</button>
-                    </div>
-                 </div>
-                </div>
-           
-          </div>
-        </div>
-=======
 <script src ="../../../public/script/inbox.js"></script>
 <script src="socket.io/socket.io.js"></script>
 <script src = "./script/inbox.js"></script>
@@ -75,7 +19,6 @@
             <li  class="collection-item">{{this.follower_username}}</li>
           {{/each}}
         </ul>
->>>>>>> cb6bc85a18dd323d5220a81f1c1a1ec14dd29d04
       </div>
       <div class="sidenav-section">
         <h3>CHANNELS</h3>
@@ -102,16 +45,21 @@
 </div>  
   
 <div id="modal1" class="modal">
-  <div class="modal-content">
-    <h4>Emoticon</h4>
-    <img class='image-emotion' src='../emoticon/angry-face-with-horns_1f47f.png' >"
-          <img class='image-emotion modal-close'  src='../emoticon/face-holding-back-tears_1f979.png' >"
-          <img class='image-emotion modal-close' src='../emoticon/smiling-face-with-heart-eyes_1f60d.png' >"
-        <img class='image-emotion modal-close' src='../emoticon/hot-face_1f975.png' >"
+  <div class="modal-content center">
+    <h4 class="center">Emoticon</h4>
+    <img class='image-emotion modal-close' src='../emoticon/angry-face-with-horns_1f47f.png' >"
+    <img class='image-emotion modal-close' src='../emoticon/face-holding-back-tears_1f979.png' >"
+    <img class='image-emotion modal-close' src='../emoticon/smiling-face-with-heart-eyes_1f60d.png' >"
+    <img class='image-emotion modal-close' src='../emoticon/hot-face_1f975.png' >"
+    <img class='image-emotion modal-close' src='../emoticon/cat-face_1f431.png'>"
+    <img class='image-emotion modal-close' src='../emoticon/christmas-tree_1f384.png'>"
+    <img class='image-emotion modal-close' src='../emoticon/fire_1f525.png' >"
+    <img class='image-emotion modal-close' src='../emoticon/wrapped-gift_1f381.png' >"
+    <img class='image-emotion modal-close' src='../emoticon/person-surfing_1f3c4.png'>"
+    <img class='image-emotion modal-close' src='../emoticon/christmas-tree_1f384.png'>"
+    <img class='image-emotion modal-close' src='../emoticon/foggy_1f301.png' >"
+    <img class='image-emotion modal-close' src='../emoticon/sparkles_2728.png' >"
     </div>
-  <div class="modal-footer">\
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
 </div>
 
  
