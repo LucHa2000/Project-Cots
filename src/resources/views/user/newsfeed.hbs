@@ -1,35 +1,6 @@
 {{>header}}
 <div class="container-user newsfeed-container">
-  
-  <div class="left-sidenav">
-    <div class="personal-avatar">
-      <img src="../img/stars.jpg" alt="" width="250px">
-    </div>
-    <div class="personal-info">
-      <div class="personal-name">
-        Nhan Dang
-      </div>
-      <div class="personal-status">
-        Active
-      </div>
-    </div>
-    <div class="friends-section">
-      <p>Friends</p>
-      <ul class="friend-list">
-        <li>@username1</li>
-        <li>@username2</li>
-        <li>@username3</li>
-        <li>@username4</li>
-        <li>@username5</li>
-        <li>@username6</li>
-        <li>@username7</li>
-        <li>@username8</li>
-        <li>@username9</li>
-        <li>@username10</li>
-      </ul>
-    </div>
-  </div>
-  <div class="right">
+  <main id="main">
     <div id="to-scroll-when-comment" class="post-card">
       <div class="post-info">
         <div class="left">
@@ -47,7 +18,10 @@
       </div>
       <div class="post-footer">
         <div class="post-reacts">
-          @nhandang, @havietluc and 3 others liked this post
+          <a href="#" class="material-icons">favorite</a>
+          {{!-- <a href="#" class="material-icons">favorite_border</a> --}}
+          <p><span>@nhandang, @havietluc</span> and <span>3</span> others liked this post</p>
+          
         </div>
         <div class="post-comments-container">
           <div class="post-comment">
@@ -156,7 +130,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </div>  
 
 

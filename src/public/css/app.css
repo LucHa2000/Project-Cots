@@ -280,6 +280,7 @@ body {
 .container-user {
   width: 100%;
   padding-top: 50px;
+  color: var(--primary-color);
 }
 
 .btn-inactive {
@@ -375,12 +376,22 @@ body {
   margin: 0;
   font-size: 1rem;
   display: flex;
+  width: 500px;
 }
 
-.search-block .row button {
-  background: none;
+@media (max-width: 1000px) {
+  .search-block .row .input-field input {
+    width: 100%;
+  }
+}
+
+.search-block .search-btn {
+  background: none !important;
   height: 100%;
   box-shadow: none !important;
+  /* border: 1px solid #fff; */
+  border: none;
+  cursor: pointer;
 }
 
 .navbar-nav {
@@ -729,32 +740,104 @@ body {
   cursor: pointer;
 }
 
+/* ------------------ shortcuts ------------------- */
+.shortcuts .shortcut-link {
+  display: block;
+  padding: 20px;
+}
+
+/* -------------------- user profile ------------------------------- */
+.profile-container .personal-info {
+  padding: 0 20px 40px 20px;
+  width: 100%;
+}
+
+.profile-container .personal-info-item {
+  padding: 10px;
+  background-color: var(--btn-active);
+  border-radius: 10px;
+  display: inline-block;
+  margin: 10px 20px;
+}
+
+.profile-container .personal-info-item:first-child {
+  display: block;
+  background-color: var(--secondary-background);
+  padding: 20px;
+  margin-top: 0;
+}
 /* --------------------- newsfeed ----------------- */
-.newsfeed-container {
-  display: flex;
-  width: 100%;
+.profile-container {
+  display: grid;
+  grid: [stack] 1fr / min-content [stack] 1fr;
 }
 
-.newsfeed-container .left-sidenav {
+@media (max-width: 850px) {
+  .profile-container > :matches(aside, main) {
+    grid-area: stack 1fr;
+  }
+
+  #sidenav-open {
+    visibility: hidden;
+    display: none;
+  }
+
+  #sidenav-open .personal-avatar {
+    display: none;
+  }
+
+  #sidenav-open .personal-name {
+    display: none;
+  }
+}
+
+#sidenav-open {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  grid-template-columns: [nav] 2fr [escape] 1fr;
+  height: 100vh;
   background: var(--secondary-background);
-  /* flex: 2; */
   padding: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: fixed;
-  width: 350px;
-  left: 0;
+  padding-top: 70px;
 }
 
-.newsfeed-container .right {
-  background: var(--background);
+#sidenav-open nav {
+  background: none !important;
+  box-shadow: none !important;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 350px;
-  width: 100%;
+}
+
+#sidenav-open .row span {
+  font-size: 12px;
+  /* border: 1px solid #fff; */
+  padding: 0 !important;
+  font-weight: 600;
+  display: inline-block;
+}
+
+#sidenav-open .personal-avatar {
+  border-radius: 50%;
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+#sidenav-open .personal-name {
+  font-weight: 600;
+  font-size: 2em;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-top: 50px;
+  width: 100%;
 }
 
 .post-card {
@@ -763,12 +846,18 @@ body {
   border-radius: 10px;
   /* width: 750px; */
   /* height: 750px; */
-  width: 70%;
+  max-width: 60%;
   padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 50px;
+}
+
+@media (max-width: 1000px) {
+  .post-card {
+    max-width: 80%;
+  }
 }
 
 .post-card .post-info {
@@ -815,6 +904,12 @@ body {
 
 .post-card .post-footer .post-reacts {
   font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.post-card .post-footer .post-reacts p {
+  margin-left: 20px;
 }
 
 .post-card .post-footer .post-comments-container {
@@ -1023,21 +1118,20 @@ body {
   background: #555;
 }
 /* ib css  */
-.image-infor-focus{
+.image-infor-focus {
   height: 30px;
   width: 50px;
 }
-.text-message{
-  color :black;
-  
+.text-message {
+  color: black;
 }
-.nameUser{
+.nameUser {
   color: red;
 }
-#notification-focus{
+#notification-focus {
   text-align: justify;
   text-align-last: justify;
 }
-.image-emotion{
+.image-emotion {
   cursor: pointer;
 }
