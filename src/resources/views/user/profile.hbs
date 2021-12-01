@@ -1,5 +1,146 @@
 {{>header}}
-<div class="main-profile"> 
+<div class="container-user profile-container">
+  {{>shortcuts}}
+  <main id="main">
+    <ul class="personal-info">
+      <li class="personal-info-item">{{account.bio}}</li>
+      <li class="personal-info-item">Job: {{account.job}}</li>
+      <li class="personal-info-item">Full Name: {{ mergeName account.last_name account.first_name}} </li>
+      <li class="personal-info-item">Gender:{{convertGender account.gender}} </li>
+      <li class="personal-info-item">Birthday: {{ convertDate account.birthday}}</li>
+    </ul>
+    <div id="to-scroll-when-comment" class="post-card">
+      <div class="post-info">
+        <div class="left">
+          <img src="../uploads/avatar.png" alt="" class="post-info-avatar">
+          <span class="post-info-username">@nhandang</span>
+        </div>
+        
+        <span class="post-info-date">29 November 2021 at 5:00 pm</span>
+      </div>
+      <div class="post-content">
+        <h2>I'm bored! </h2>
+        <div class="post-img">
+          <img src="../uploads/processor.png" alt="">
+        </div>
+      </div>
+      <div class="post-footer">
+        <div class="post-reacts">
+          <a href="#" class="material-icons">favorite</a>
+          {{!-- <a href="#" class="material-icons">favorite_border</a> --}}
+          <p><span>@nhandang, @havietluc</span> and <span>3</span> others liked this post</p>
+          
+        </div>
+        <div class="post-comments-container">
+          <div class="post-comment">
+            <div class="post-comment-username"><a href="">@havietluc</a> </div>
+            <div class="post-comment-content">Why?</div>
+          </div>
+
+          <div class="post-comment">
+            <div class="post-comment-username"><a href="">@nhandang</a> </div>
+            <div class="post-comment-content">I don't know</div>
+          </div>
+          <div class="post-comment">
+            <div class="post-comment-username"><a href="">@dinhthanhphong</a></div>
+            <div class="post-comment-content">Hmmm....</div>
+          </div>
+          <form class="post-input-form" action="">
+            <div class="input-field">
+            <input type="text" placeholder="Enter comment...">
+            </div>
+            <button type="submit" class="btn-active"><span class="material-icons">send</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="" class="post-card">
+      <div class="post-info">
+        <div class="left">
+          <img src="../uploads/avatar.png" alt="" class="post-info-avatar">
+          <span class="post-info-username">@nhandang</span>
+        </div>
+        
+        <span class="post-info-date">29 November 2021 at 5:00 pm</span>
+      </div>
+      <div class="post-content">
+        <h2>I'm bored! </h2>
+        <div class="post-img">
+          <img src="../uploads/processor.png" alt="">
+        </div>
+      </div>
+      <div class="post-footer">
+        <div class="post-reacts">
+          @nhandang, @havietluc and 3 others liked this post
+        </div>
+        <div class="post-comments-container">
+          <div class="post-comment">
+            <div class="post-comment-username"><a href="">@havietluc</a> </div>
+            <div class="post-comment-content">Why?</div>
+          </div>
+
+          <div class="post-comment">
+            <div class="post-comment-username"><a href="">@nhandang</a> </div>
+            <div class="post-comment-content">I don't know</div>
+          </div>
+          <div class="post-comment">
+            <div class="post-comment-username"><a href="">@dinhthanhphong</a></div>
+            <div class="post-comment-content">Hmmm....</div>
+          </div>
+          <form class="post-input-form" action="">
+            <div class="input-field">
+            <input type="text" placeholder="Enter comment...">
+            </div>
+            <button type="submit" class="btn-active"><span class="material-icons">send</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="" class="post-card">
+      <div class="post-info">
+        <div class="left">
+          <img src="../uploads/avatar.png" alt="" class="post-info-avatar">
+          <span class="post-info-username">@nhandang</span>
+        </div>
+        
+        <span class="post-info-date">29 November 2021 at 5:00 pm</span>
+      </div>
+      <div class="post-content">
+        <h2>I'm bored! </h2>
+        <div class="post-img">
+          <img src="../uploads/processor.png" alt="">
+        </div>
+      </div>
+      <div class="post-footer">
+        <div class="post-reacts">
+          @nhandang, @havietluc and 3 others liked this post
+        </div>
+        <div class="post-comments-container">
+          <div class="post-comment">
+            <div class="post-comment-username"><a href="">@havietluc</a> </div>
+            <div class="post-comment-content">Why?</div>
+          </div>
+
+          <div class="post-comment">
+            <div class="post-comment-username"><a href="">@nhandang</a> </div>
+            <div class="post-comment-content">I don't know</div>
+          </div>
+          <div class="post-comment">
+            <div class="post-comment-username"><a href="">@dinhthanhphong</a></div>
+            <div class="post-comment-content">Hmmm....</div>
+          </div>
+          <form class="post-input-form" action="">
+            <div class="input-field">
+            <input type="text" placeholder="Enter comment...">
+            </div>
+            <button type="submit" class="btn-active"><span class="material-icons">send</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>  
+{{!-- <div class="main-profile"> 
             <div class="container-user">
                 <div class="row">
                     <div class="col m3 push-l2">
@@ -56,4 +197,4 @@
             </div>
 
 
-</div>
+</div> --}}
