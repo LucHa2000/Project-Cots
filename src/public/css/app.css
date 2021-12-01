@@ -279,8 +279,8 @@ body {
 
 .container-user {
   width: 100%;
-  padding-top: 50px;
   color: var(--primary-color);
+  background-color: var(--background);
 }
 
 .btn-inactive {
@@ -766,7 +766,8 @@ body {
   padding: 20px;
   margin-top: 0;
 }
-/* --------------------- newsfeed ----------------- */
+
+/* ----------------------- sidenav-open -------------------- */
 .profile-container {
   display: grid;
   grid: [stack] 1fr / min-content [stack] 1fr;
@@ -777,16 +778,16 @@ body {
     grid-area: stack 1fr;
   }
 
-  #sidenav-open {
+  .profile-container #sidenav-open {
     visibility: hidden;
     display: none;
   }
 
-  #sidenav-open .personal-avatar {
+  .profile-container #sidenav-open .personal-avatar {
     display: none;
   }
 
-  #sidenav-open .personal-name {
+  .profile-container #sidenav-open .personal-name {
     display: none;
   }
 }
@@ -832,13 +833,18 @@ body {
   font-size: 2em;
 }
 
-#main {
+.newsfeed-container #main,
+.profile-container #main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 100px;
   width: 100%;
 }
+
+/* --------------------- newsfeed --------------------- */
+
+/* --------------------- post card ----------------- */
 
 .post-card {
   background: var(--secondary-background);
@@ -955,6 +961,186 @@ body {
 
 .post-card .post-input-form .input-field input {
   color: var(--primary-color);
+}
+
+/* ------------------------ inbox ----------------------- */
+.inbox-container {
+  display: grid;
+  grid: [stack] 1fr / min-content [stack] 1fr;
+}
+
+.inbox-container #sidenav-open {
+  justify-content: flex-start;
+  padding: 30px 70px;
+}
+
+#sidenav-open .sidenav-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: block;
+}
+
+.inbox-container #sidenav-open .sidenav-section h3 {
+  font-size: 0.8em;
+  word-wrap: normal;
+  display: block;
+  width: 100%;
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+.chat-main {
+  padding: 0 !important;
+}
+
+.container-chat {
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  position: relative;
+}
+
+#close-boxchat {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: var(--btn-active);
+}
+
+#chat-content {
+  position: absolute;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  max-height: 90vh;
+  padding: 50px 20px;
+  padding-bottom: 3rem;
+}
+
+.message {
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  background-color: var(--secondary-color);
+  padding: 0.25rem;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.message #message-inbox {
+  padding: 1rem;
+  flex-grow: 1;
+  color: var(--primary-color);
+  width: 80%;
+  border: none;
+}
+
+#emoji-btn,
+#send-message {
+  background: none;
+  box-shadow: none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ib css  */
+.image-infor-focus {
+  height: 30px;
+  width: 50px;
+}
+
+.message-container {
+  text-align: right;
+}
+
+.text-message {
+  color: var(--primary-color);
+  display: inline-block;
+  background-color: #26272e;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 0;
+  margin-top: 15px;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+.nameUser {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+#notification-focus {
+  text-align: justify;
+  text-align-last: justify;
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
+.image-emotion {
+  cursor: pointer;
+}
+
+.image-infor-focus {
+  width: 50px;
+  height: 50px;
+}
+
+/* ------------------inbox - dot flashing --------------- */
+.dot-flashing {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  animation: dotFlashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.dot-flashing::before,
+.dot-flashing::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-flashing::before {
+  left: -15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+
+.dot-flashing::after {
+  left: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes dotFlashing {
+  0% {
+    background-color: #9880ff;
+  }
+  50%,
+  100% {
+    background-color: #ebe6ff;
+  }
 }
 
 /* ------------------ user - account settings ------------------ */
@@ -1116,22 +1302,4 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-/* ib css  */
-.image-infor-focus {
-  height: 30px;
-  width: 50px;
-}
-.text-message {
-  color: black;
-}
-.nameUser {
-  color: red;
-}
-#notification-focus {
-  text-align: justify;
-  text-align-last: justify;
-}
-.image-emotion {
-  cursor: pointer;
 }
