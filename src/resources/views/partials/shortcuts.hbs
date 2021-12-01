@@ -1,5 +1,32 @@
-<div class="shortcuts">
-  <a class="shortcut-link" href="#">
+<aside id="sidenav-open">
+  <nav>
+    <div>
+      <img
+        class="personal-avatar"
+        src="../img/stars.jpg"
+        alt=""
+        width="250px"
+      />
+    </div>
+    <div class="personal-name">
+      <a href="/profile">@{{account.username}}</a>
+    </div>
+    <div class="row">
+      <a href="/profile/editPage">Edit Profile</a>
+    </div>
+    <div class="row">
+      <span> 1 Post </span>
+      -
+      <span> 2 Followers </span>
+      -
+      <span>2 Following</span>
+    </div>
+    <div class="row" style="font-size: 12px; color: var(--secondary-color);">
+      &copy; Copyright by Team 1 DTU
+    </div>
+  </nav>
+</aside>
+{{! <a class="shortcut-link" href="#">
     <span class="material-icons">people</span>
   </a>
   <a class="shortcut-link" href="/inbox">
@@ -7,8 +34,8 @@
   </a>
   <a class="shortcut-link" href="#">
     <span class="material-icons">notifications</span>
-  </a>
-  {{! <div class="container">
+  </a> }}
+{{! <div class="container">
     <ul class="collapsible">
       <li>
         <div class="collapsible-header"><i
@@ -31,4 +58,3 @@
       </li>
     </ul>
   </div> }}
-</div>
