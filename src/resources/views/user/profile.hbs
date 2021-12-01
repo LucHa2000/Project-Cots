@@ -2,6 +2,13 @@
 <div class="container-user profile-container">
   {{>shortcuts}}
   <main id="main">
+    <ul class="personal-info">
+      <li class="personal-info-item">{{account.bio}}</li>
+      <li class="personal-info-item">Job: {{account.job}}</li>
+      <li class="personal-info-item">Full Name: {{ mergeName account.last_name account.first_name}} </li>
+      <li class="personal-info-item">Gender:{{convertGender account.gender}} </li>
+      <li class="personal-info-item">Birthday: {{ convertDate account.birthday}}</li>
+    </ul>
     <div id="to-scroll-when-comment" class="post-card">
       <div class="post-info">
         <div class="left">

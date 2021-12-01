@@ -280,6 +280,7 @@ body {
 .container-user {
   width: 100%;
   padding-top: 50px;
+  color: var(--primary-color);
 }
 
 .btn-inactive {
@@ -745,6 +746,26 @@ body {
   padding: 20px;
 }
 
+/* -------------------- user profile ------------------------------- */
+.profile-container .personal-info {
+  padding: 0 20px 40px 20px;
+  width: 100%;
+}
+
+.profile-container .personal-info-item {
+  padding: 10px;
+  background-color: var(--btn-active);
+  border-radius: 10px;
+  display: inline-block;
+  margin: 10px 20px;
+}
+
+.profile-container .personal-info-item:first-child {
+  display: block;
+  background-color: var(--secondary-background);
+  padding: 20px;
+  margin-top: 0;
+}
 /* --------------------- newsfeed ----------------- */
 .profile-container {
   display: grid;
