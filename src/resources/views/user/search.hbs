@@ -27,9 +27,8 @@
         <h8 style="padding-right:50px">{{this.username}}
        </h8>
         <a onclick="return alert('action success !')"  href="/{{followCustomer follow}}/{{this.username}}" style="margin-left:20px">{{followCustomer follow}}</a>
-        <a href="{{this.username}}/inbox" style="margin-left:20px">inbox</a>
+        <a href="/inbox" style="margin-left:20px">inbox</a>
         </div>
-      {{!-- <div class="collapsible-body"><span>Notifications</span> <a href="{{this.username}}/follow"></a></div> --}}
     </li> 
     {{else}}
      <h1>Not found</h1>

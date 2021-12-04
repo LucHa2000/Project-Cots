@@ -1,11 +1,11 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const multer = require('multer');
+let multer = require("multer");
 const upload = multer({
-  dest: 'src/public/uploads/',
+    dest: "src/public/uploads/",
 });
-const profileController = require('../app/controllers/ProfileController');
-router.get('/editPage',profileController.editPage)
-router.post('/update',upload.single('image'),profileController.update)
-router.use('/', profileController.index);
+const profileController = require("../app/controllers/ProfileController");
+router.get("/editPage", profileController.editPage);
+router.post("/update", upload.single("image"), profileController.update);
+router.use("/", profileController.index);
 module.exports = router;

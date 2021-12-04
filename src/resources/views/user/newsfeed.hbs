@@ -1,5 +1,28 @@
 {{>header}}
-<div class="container-user newsfeed-container">
+<div class="container-user newsfeed-container center">
+    <div class="post-add container">
+        <div class="card" style="margin-top:100px; background-color:#2b2b36">
+        <div class="card-content ">
+          <div class="row">
+             <form class="col s12">
+               <div class="row">
+                <div class="col s4">
+                   <img style="height:100px"src="../uploads/{{avatar}}"  alt="">
+                </div>
+                <div class="input-field col s8">
+                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                   <label for="textarea1">@{{username}}, What are you thinking ?</label>
+                 </div>
+                </div>
+            </form>
+          </div>
+        </div>
+        <div class="card-action">
+          <a href="#">Post</a>
+          <a href="#">Add Image</a>
+        </div>
+      </div>
+    </div>
   <main id="main">
     <div id="to-scroll-when-comment" class="post-card">
       <div class="post-info">
@@ -7,7 +30,6 @@
           <img src="../uploads/avatar.png" alt="" class="post-info-avatar">
           <span class="post-info-username">@nhandang</span>
         </div>
-        
         <span class="post-info-date">29 November 2021 at 5:00 pm</span>
       </div>
       <div class="post-content">

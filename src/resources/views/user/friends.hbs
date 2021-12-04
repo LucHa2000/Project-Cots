@@ -1,0 +1,65 @@
+<div class="container center">
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs center">
+        <li class="tab col s3"><a href="#test1">Following</a></li>
+        <li class="tab col s3"><a class="active" href="#test2">Follower</a></li>
+        <li class="tab col s3"><a href="#test3"> My Group</a></li>
+        <li class="tab col s3"><a href="#test4">Group Following</a></li>
+      </ul>
+    </div>
+    <div id="test1" class="col s12">
+      <ul>
+        {{#each following}}
+          <li class="collection-member-chat">
+            <img class="circle" src="../uploads/{{this.follower_avatar}}" />
+            <p>
+              {{this.follower_username}}
+            </p>
+            <button class="btn center">Delete</button>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div id="test2" class="col s12">
+      <ul>
+        {{#each followers}}
+          <li class="collection-member-chat">
+            {{!-- <img class="circle" src="../uploads/{{this.avatar}}" /> --}}
+            <p>
+              {{this.username}}
+            </p>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div id="test3" class="col s12">
+      <ul>
+        {{#each myGroup}}
+          <li class="collection-member-chat">
+            <img class="circle" src="../uploads/{{this.avatar}}" />
+            <p>
+              {{this.crew_name}}
+            </p>
+            <a
+              class="btn center"
+              href="/crew/{{this.crew_name}}/delete"
+            >Delete</a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div id="test4" class="col s12">
+      <ul>
+        {{#each memberGroup}}
+          <li class="collection-member-chat">
+            <img class="circle" src="../uploads/{{this.avatar}}" />
+            <p>
+              {{this.crew_name}}
+            </p>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>

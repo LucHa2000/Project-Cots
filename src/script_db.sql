@@ -20,7 +20,7 @@ create table accounts (
 	primary key (username),
 	foreign key (acc_type_id) references account_types(acc_type_id)	
 );
-
+-- add avatar type text to accounts
 create table notification_types (
 	noti_type_id int not null auto_increment,
 	noti_type_desc varchar(3000) character set utf8mb4,
@@ -98,13 +98,26 @@ create table followers (
 	foreign key (follower_username) references accounts(username),
 	constraint PK_followers primary key (username, follower_username)
 );
-#insert values into tables
-#account_types table
-insert into account_types values (1, 'administrator');
-insert into account_types values (2, 'user');
-select * from accounts
-#accounts table
-select * from account_types
-alter table 
-ALTER TABLE accounts
-ADD avatar varchar(200);
+create table crews(
+    crew_name varchar(50) not null,
+	admin varchar(50) not null,
+	avatar varchar(255),
+    create_date datetime,
+    crew_title  varchar(500) ,
+	foreign key (admin) references accounts(username),
+	constraint PK_crew primary key (crew_name, admin)
+);
+
+create table crew_members(
+	crew_name varchar(50) not null,
+	member_username varchar(50) not null,
+	joined_date datetime,
+	foreign key (member_username) references crews(crew_name),
+	constraint PK_member primary key (crew_name, member_username)
+)
+
+ALTER TABLE crew_members
+ADD follower_avatar varchar(255);
+ADD CONSTRAINT FK_crew_account
+FOREIGN KEY (member_username) REFERENCES accounts(username);
+

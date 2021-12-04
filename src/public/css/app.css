@@ -1393,3 +1393,20 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+
+/* chat member */
+
+.collection-member-chat {
+    display: flex;
+    width: 100px;
+    cursor: pointer;
+}
+
+.collection-member-chat img {
+    height: 10%;
+    width: 50%;
+    margin: 10px 10px 0px 0px;
+}
+
+.collection-member-chat p {}

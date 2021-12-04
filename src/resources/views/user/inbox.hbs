@@ -1,7 +1,7 @@
 
 <script src ="../../../public/script/inbox.js"></script>
 <script src="socket.io/socket.io.js"></script>
-<script src = "./script/inbox.js"></script>
+<script src = "./script/inbox_private.js"></script>
 <style>
   .collection-item{
     cursor: pointer;
@@ -16,14 +16,32 @@
         <h3>DIRECT MESSAGES</h3>
         <ul>
           {{#each follower}}
-            <li  class="collection-item">{{this.follower_username}}</li>
+            <li class="collection-member-chat" > 
+               <img class="circle"src="../uploads/{{this.follower_avatar}}"/>
+             <p >
+               {{this.follower_username}}
+             </p>
+            </li>
           {{/each}}
         </ul>
       </div>
       <div class="sidenav-section">
-        <h3>CHANNELS</h3>
+        <h3>MY CHANNELS  </h3>
+        <a href="#add-group" class="material-icons modal-trigger">add_circle_outline</a>
+         <ul>
+          {{#each crews}}
+             <li class="collection-member-chat" > 
+               <img class="circle"src="../uploads/{{this.avatar}}"/>
+             <p >
+               {{this.crew_name}}
+             </p>
+            </li>
+          {{/each}}
+        </ul>
       </div>
-      
+      <div class="sidenav-section">
+        <h3>FOLLOW CHANNELS</h3>
+      </div>
     </nav>
   </aside>
   <main class="chat-main" id="main">
@@ -37,14 +55,14 @@
       </div>
       <div class="message">
         <textarea placeholder="message" id="message-inbox" class="materialize-textarea-" required></textarea> 
-          <a id="emoji-btn" class="waves-effect waves-light btn modal-trigger" href="#modal1"><span class="material-icons">emoji_emotions</span></a>
+          <a id="emoji-btn" class="waves-effect waves-light btn modal-trigger" href="#icon-modal"><span class="material-icons">emoji_emotions</span></a>
         <button id="send-message" class="waves-effect waves-light btn btn-small"><span class="material-icons">send</span></button>
       </div>
     </div>
   </main>
 </div>  
-  
-<div id="modal1" class="modal">
+{{!-- modal icon --}}
+<div id="icon-modal" class="modal">
   <div class="modal-content center">
     <h4 class="center">Emoticon</h4>
     <img class='image-emotion modal-close' src='../emoticon/angry-face-with-horns_1f47f.png' >"
@@ -61,7 +79,44 @@
     <img class='image-emotion modal-close' src='../emoticon/sparkles_2728.png' >"
     </div>
 </div>
+{{!-- modal add group --}}
+  <div id="add-group" class="modal">
+    <div class="modal-content">
+      <h4>Create Group</h4>
+  <div class="row">
+    <form class="col s12"  action="/crew/add" method="POST" enctype="multipart/form-data">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="group_name" type="text" class="validate" name="crew_name">
+          <label for="group_name">Group Name</label>
+        </div>
+      </div>
+        <div class="row">
+        <div class="input-field col s12">
+          <input id="title" type="text" class="validate" name="crew_title">
+          <label for="title">Title</label>
+        </div>
+      </div>
+      <div class="row">
+          <div class="file-field input-field">
+      <div class="btn">
+        <span>Avatar</span>
+        <input type="file" name="image">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+         </div>
+      </div>
+      <button class="btn center" type="submit"> Create </button>
+    </form>
 
+
+
+  </div>
+        
+    </div>
+  </div>
  
 
     
