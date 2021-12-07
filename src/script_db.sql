@@ -112,12 +112,12 @@ create table crew_members(
 	crew_name varchar(50) not null,
 	member_username varchar(50) not null,
 	joined_date datetime,
-	foreign key (member_username) references crews(crew_name),
+	foreign key (crew_name) references crews(crew_name),
 	constraint PK_member primary key (crew_name, member_username)
 )
 
 ALTER TABLE crew_members
-ADD follower_avatar varchar(255);
+ADD joined_avatar varchar(255);
 ADD CONSTRAINT FK_crew_account
 FOREIGN KEY (member_username) REFERENCES accounts(username);
 

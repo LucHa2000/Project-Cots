@@ -10,9 +10,6 @@ class CrewController {
         let admin = req.cookies.username;
         let crew_title = req.body.crew_title || "";
         let avatar = req.file.path.split("\\").slice(3).join();
-        console.log(req.body);
-        console.log(admin);
-        console.log(avatar);
         db.execute(
             Crew.save(crew_name, admin, crew_title, avatar),
             (err, result) => {

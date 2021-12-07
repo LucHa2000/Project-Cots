@@ -13,6 +13,7 @@ const port = process.env.PORT || 4000;
 const server = require("http").Server(app);
 var io = require("socket.io")(server);
 const nodemailer = require("nodemailer");
+const { isObject } = require("util");
 require("dotenv").config();
 
 //parsing middleware
@@ -56,12 +57,14 @@ server.listen(port, () => {
 });
 const arrayUser = [];
 const usersId = [];
+
+const arrayUserGroup = [];
+const userIdGroup = [];
 //check connect
 io.on("connection", (socket) => {
     console.log("have a connect ID :" + socket.id);
-    socket.on("disconnect", () => {
-        console.log(socket.id + " disconnected !");
-    });
+
+    // chat private
     // listening  username
     socket.on("user-name", (data) => {
         arrayUser.push(data);
@@ -72,6 +75,7 @@ io.on("connection", (socket) => {
     //listening content
     socket.on("content-message", (data) => {
         var socketId = usersId[data.receiver];
+
         io.to(socketId).emit("new-message-private", data);
     });
     //listening emotion
@@ -86,6 +90,29 @@ io.on("connection", (socket) => {
     //stop listening user write
     socket.on("user-write-stop", (data) => {
         io.sockets.emit("server-send-user-write-stop");
+    });
+
+    //chat group
+    var userMember = "";
+    //join group
+    socket.on("new-join", (data) => {
+        userMember = data;
+        arrayUserGroup.push(data);
+        socket.broadcast.emit("new-member-joined", data);
+        io.sockets.emit("list-member-joined", arrayUserGroup);
+    });
+    //out group
+    socket.on("disconnect", (data) => {
+        arrayUserGroup.splice(arrayUserGroup.indexOf(userMember), 1);
+        io.sockets.emit("member-out-group", arrayUserGroup);
+    });
+    //listening content group
+    socket.on("content-message-group", (data) => {
+        socket.broadcast.emit("new-message-group", data);
+    });
+    //listening emotion
+    socket.on("content-emotion-group", (data) => {
+        socket.broadcast.emit("new-message-group-emotion", data);
     });
 });
 route(app);

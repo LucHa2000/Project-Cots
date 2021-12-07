@@ -1,7 +1,8 @@
-
 <script src ="../../../public/script/inbox.js"></script>
 <script src="socket.io/socket.io.js"></script>
+<script src = "./script/inbox_group.js"></script>
 <script src = "./script/inbox_private.js"></script>
+
 <style>
   .collection-item{
     cursor: pointer;
@@ -16,7 +17,7 @@
         <h3>DIRECT MESSAGES</h3>
         <ul>
           {{#each follower}}
-            <li class="collection-member-chat" > 
+            <li class="collection-member-chat collection-member-chat-private" > 
                <img class="circle"src="../uploads/{{this.follower_avatar}}"/>
              <p >
                {{this.follower_username}}
@@ -30,7 +31,7 @@
         <a href="#add-group" class="material-icons modal-trigger">add_circle_outline</a>
          <ul>
           {{#each crews}}
-             <li class="collection-member-chat" > 
+             <li class="collection-member-chat-group" > 
                <img class="circle"src="../uploads/{{this.avatar}}"/>
              <p >
                {{this.crew_name}}
@@ -41,11 +42,21 @@
       </div>
       <div class="sidenav-section">
         <h3>FOLLOW CHANNELS</h3>
+          <ul>
+          {{#each followCrews}}
+             <li class=" collection-member-chat-group" > 
+               <img class="circle" src="../uploads/{{this.joined_avatar}}"/>
+             <p >
+               {{this.crew_name}}
+             </p>
+            </li>
+          {{/each}}
+        </ul>
       </div>
     </nav>
   </aside>
-  <main class="chat-main" id="main">
-    <div class="container-chat">
+  <main class="chat-main" id="main" style="display:flex">
+    <div id="container-chat-private" class="container-chat">
       <p id="username" hidden>{{account}}</p>
       <button type="submit"  id="close-boxchat" class="waves-effect waves-light btn-small right">Close</button>
       <div class="card chatbox" style="">
@@ -54,12 +65,42 @@
         </div>
       </div>
       <div class="message">
-        <textarea placeholder="message" id="message-inbox" class="materialize-textarea-" required></textarea> 
+        <textarea placeholder="message" id="message-inbox-private" class="materialize-textarea" required></textarea> 
           <a id="emoji-btn" class="waves-effect waves-light btn modal-trigger" href="#icon-modal"><span class="material-icons">emoji_emotions</span></a>
         <button id="send-message" class="waves-effect waves-light btn btn-small"><span class="material-icons">send</span></button>
       </div>
     </div>
+    <div id="container-chat-group" class="container-chat">
+      <p id="username" hidden>{{account}}</p>
+      <button type="submit"  id="close-boxchat" class="waves-effect waves-light btn-small right">Close</button>
+      <div class="card chatbox" style="">
+        <div id="chat-content-group" class="left"> 
+          <p id="notification-focus"></p>        
+        </div>
+      </div>
+      <div class="message" >
+          <textarea placeholder="message" id="message-inbox-group" class="materialize-textarea" required></textarea> 
+          <a id="emoji-btn-group" class="waves-effect waves-light btn modal-trigger" href="#icon-modal"><span class="material-icons">emoji_emotions</span></a>
+        <button id="send-message-group" class="waves-effect waves-light btn btn-small"><span class="material-icons">send</span></button>
+      </div>
+    </div>
+    <div class="main-joined-group">
+         <aside id="sidenav-open">
+    <div class="member-joined">
+      <h2 class="sidenav-title">Memember Joined</h2>
+      <div >
+        <ul class="member-join-room"> 
+            <li class="collection-member-chat collection-member-chat-group" > 
+                {{!-- <img class="circle"src="../uploads/"/> --}}
+
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+    </div>
   </main>
+   
 </div>  
 {{!-- modal icon --}}
 <div id="icon-modal" class="modal">
@@ -110,11 +151,7 @@
       </div>
       <button class="btn center" type="submit"> Create </button>
     </form>
-
-
-
   </div>
-        
     </div>
   </div>
  

@@ -4,13 +4,13 @@ class Crew_members {
         this.crew_name = crew_name;
         this.member_username;
     }
-    static save(crew_name, member_username) {
+    static save(crew_name, member_username, joined_avatar) {
         let d = new Date();
         let yyyy = d.getFullYear();
         let mm = d.getMonth() + 1;
         let dd = d.getDate();
         let joined_date = `${yyyy}-${mm}-${dd}`;
-        let sql = `INSERT INTO crew_members VALUES ( "${crew_name}","${member_username}" ,"${joined_date}")`;
+        let sql = `INSERT INTO crew_members VALUES ( "${crew_name}","${member_username}" ,"${joined_date}","${joined_avatar}")`;
         return sql;
     }
     static findAll() {
@@ -19,6 +19,12 @@ class Crew_members {
     }
     static findByTag(tag, value) {
         let sql = `SELECT * FROM crew_members Where ${tag} = "${value}"`;
+
+        return sql;
+    }
+    static findByNameLike(tag, value) {
+        let sql = `SELECT * FROM crew_members Where ${tag}  LIKE "%${value}%"`;
+
         return sql;
     }
     static reload(value) {
