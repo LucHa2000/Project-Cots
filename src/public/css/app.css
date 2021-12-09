@@ -287,6 +287,7 @@ table {
   --li-btn-active: #3f3f5d;
   --link-active: var(--primary-color);
   --link-inactive: var(--secondary-color);
+  --nav-background: #161b22;
 }
 
 * {
@@ -374,9 +375,8 @@ body {
   justify-content: space-between;
   align-items: center;
   box-shadow: none;
-  border-bottom: 1px solid var(--border-color);
   z-index: 999;
-  background: var(--background);
+  background: var(--nav-background);
   padding: 0 50px 0 50px;
   height: 50px;
 }
@@ -1385,6 +1385,15 @@ body {
 
 .friends-container .tabs .tab a {
   color: var(--primary-color);
+}
+
+.friends-container .tabs .tab a:focus {
+  background-color: var(--li-btn-active);
+  border-bottom: 2px solid var(--btn-active);
+}
+
+.friends-container .tabs .tab .active {
+  background-color: var(--li-btn-active);
 }
 
 .friends-container .collection-member-chat {

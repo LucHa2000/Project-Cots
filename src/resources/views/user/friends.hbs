@@ -1,14 +1,15 @@
 {{>header}}
-<div class="container friends-container center">
+<div class="container-user friends-container center">
   <div class="row">
     <div class="col s12">
       <ul class="tabs center">
-        <li class="tab col s3"><a href="#test1">Following</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Follower</a></li>
+        <li class="tab col s3"><a class="active" href="#test1">Following</a></li>
+        <li class="tab col s3"><a  href="#test2">Follower</a></li>
         <li class="tab col s3"><a href="#test3"> My Group</a></li>
         <li class="tab col s3"><a href="#test4">Group Following</a></li>
       </ul>
     </div>
+    <div class="container">
     <div id="test1" class="col s12">
       <ul>
         {{#each following}}
@@ -72,4 +73,5 @@
       </ul>
     </div>
   </div>
+</div>
 </div>
