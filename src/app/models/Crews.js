@@ -7,8 +7,8 @@ class Crew {
         let dd = d.getDate();
         let create_date = `${yyyy}-${mm}-${dd}`;
         let sql = `INSERT INTO CREWS
-            VALUES ( "${crew_name}","${admin}" ,"${create_date}",
-            "${crew_title}","${avatar}" )`;
+            VALUES ( "${crew_name}","${admin}" ,"${avatar}","${create_date}",
+            "${crew_title}")`;
         return sql;
     }
     static findAll() {
