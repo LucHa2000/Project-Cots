@@ -1413,6 +1413,34 @@ body {
   width: 50px;
 }
 
+/* -------------- search page --------------- */
+.search-right .mid-home {
+  padding-top: 50px;
+}
+
+.search-container {
+  padding-top: 20px;
+}
+
+.search-item {
+  background: none !important;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: none;
+  align-items: center;
+}
+
+.search-item .left {
+  display: flex;
+  align-items: center;
+}
+
+.search-item .left img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
 /* ------------------------- others ----------------------- */
 
 /* width */
