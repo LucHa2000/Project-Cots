@@ -13,7 +13,6 @@
                 </div>
                 <span class="user-fullname">{{accounts.full_name}}</span>
                 <a href="/user_account/view" class="collection-item  is-active first-child">Account Settings</a>
-                <a href="/user_account/view_order" class="collection-item">Home</a>
                 <a href="/auth/logout" class="collection-item">Logout</a>
               </div>
               <div class="right">
@@ -46,11 +45,11 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="file-field input-field col s5">
-                     <img src="../uploads/{{account.avatar}}"alt="Avatar" class="responsive-img list-img">
-                     <br>
-                     <div class="btn">
-                     <span>Avatar</span>
+                    <div class="file-field input-field col s5 m12">
+                     {{!-- <img src="../uploads/{{account.avatar}}"alt="Avatar" class="responsive-img list-img"> --}}
+                     {{!-- <br> --}}
+                     <div class="btn btn-active">
+                     <span>Change avatar</span>
                      <input type="file" name="image">
                          </div>
                         <div class="file-path-wrapper">
@@ -118,7 +117,6 @@
         </div> 
       </div>
     </main>
-    {{>footer}}
     <script src="./script/main.js"></script>
   </body>
 </html>
