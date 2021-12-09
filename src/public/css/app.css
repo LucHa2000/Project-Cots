@@ -1250,12 +1250,14 @@ body {
   color: var(--primary-color);
 }
 
-.account-settings-page .container .hero-bg {
-  background: url("./../images/pexels-karolina-grabowska-4386366.jpg");
-  width: 100%;
-  height: 200px;
-  background-position: center;
-  background-size: cover;
+.account-settings-page .container-user {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.account-settings-page .container-user .title {
+  text-align: center;
+  font-weight: 600;
 }
 
 .main-account-settings-container .d-flex {
@@ -1276,13 +1278,16 @@ body {
   display: block;
   text-align: center;
   margin-top: 20px;
+
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
 }
 
 .main-account-settings-container .left .user-pf-img img {
+  object-fit: cover;
   width: 100%;
-  height: 100px;
-  aspect-ratio: auto 100% / 100px;
-  border-radius: 50%;
+  height: 100%;
 }
 
 .main-account-settings-container .left .first-child {
@@ -1291,14 +1296,13 @@ body {
 
 .main-account-settings-container .left a {
   padding: 20px !important;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   font-weight: 600;
   font-size: 0.9em;
 }
 
 .main-account-settings-container .left .is-active {
   background-color: var(--btn-active);
-  color: #fff;
 }
 
 .main-account-settings-container .right {
@@ -1323,7 +1327,7 @@ body {
 .main-account-settings-container .right .row .lbl-notation span {
   font-size: 0.8em;
   font-weight: 600;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .main-account-settings-container .right .row .lbl-notation .notation {
@@ -1332,10 +1336,11 @@ body {
 
 .main-account-settings-container .right .row input {
   border: 1px solid var(--border-color);
-  border-radius: 5px;
+  border-radius: 9999px;
   padding: 10px;
   box-sizing: border-box;
   font-size: 1em;
+  color: var(--primary-color);
 }
 
 /* ------------------------- footer -------------------------- */
@@ -1392,6 +1397,11 @@ body {
 .friends-container .collection-member-chat .left {
   display: flex;
   align-items: center;
+  font-weight: 600;
+}
+
+.friends-container .collection-member-chat .left img {
+  width: 50px;
 }
 
 /* ------------------------- others ----------------------- */

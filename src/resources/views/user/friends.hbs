@@ -41,12 +41,15 @@
       <ul>
         {{#each myGroup}}
           <li class="collection-member-chat">
-            <img class="circle" src="../uploads/{{this.avatar}}" />
-            <p>
-              {{this.crew_name}}
-            </p>
+            <div class="left">
+              <img class="circle" src="../uploads/{{this.avatar}}" />
+              <p>
+                {{this.crew_name}}
+              </p>
+            </div>
+            
             <a
-              class="btn center"
+              class="btn btn-active center"
               href="/crew/{{this.crew_name}}/delete"
             >Delete</a>
           </li>
