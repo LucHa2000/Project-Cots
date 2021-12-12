@@ -26,7 +26,6 @@ class AuthController {
                             res.cookie("username", result[0].username);
                             res.cookie("author", true);
                             if (result[0].acc_type_id == 2) {
-                                console.log(result[0]);
                                 res.redirect("/newsfeed");
                             } else {
                                 res.redirect("/admin");

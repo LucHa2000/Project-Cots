@@ -97,9 +97,13 @@ io.on("connection", (socket) => {
     //join group
     socket.on("new-join", (data) => {
         userMember = data;
-        arrayUserGroup.push(data);
-        socket.broadcast.emit("new-member-joined", data);
-        io.sockets.emit("list-member-joined", arrayUserGroup);
+        if (arrayUserGroup.indexOf(data) == -1) {
+            arrayUserGroup.push(data);
+            socket.broadcast.emit("new-member-joined", data);
+            io.sockets.emit("list-member-joined", arrayUserGroup);
+        } else {
+            return;
+        }
     });
     //out group
     socket.on("disconnect", (data) => {

@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../../config/db");
 const Crew = require("../models/Crews");
 const Followers = require("../models/Followers");
-const Account = require("../models/Account");
+const Accounts = require("../models/Account");
 const Crew_members = require("../models/Crew_members");
 
 class FriendsController {
@@ -34,6 +34,15 @@ class FriendsController {
                 }
             );
         });
+    }
+    inforFriends(req, res, next) {
+        let usernameFriend = req.params.username;
+        db.execute(
+            Accounts.findByTag("username", usernameFriend),
+            (err, account) => {
+                res.render("user/infor_friend", { account: account[0] });
+            }
+        );
     }
 }
 module.exports = new FriendsController();

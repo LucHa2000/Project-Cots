@@ -2,19 +2,26 @@ const express = require("express");
 const router = express.Router();
 var moment = require("moment");
 const db = require("../../config/db");
-const Account = require("../models/Account");
+const Accounts = require("../models/Account");
+const Posts = require("../models/Posts");
+
 class ProfileController {
     index(req, res, next) {
         db.execute(
-            Account.findByTag("username", req.cookies.username),
+            Accounts.findByTag("username", req.cookies.username),
             (err, result) => {
-                res.render("user/profile", { account: result[0] });
+                db.execute(
+                    Posts.findByTag("username", req.cookies.username),
+                    (err, myPosts) => {
+                        res.render("user/profile", { account: result[0], posts: myPosts });
+                    }
+                );
             }
         );
     }
     editPage(req, res, next) {
         db.execute(
-            Account.findByTag("username", req.cookies.username),
+            Accounts.findByTag("username", req.cookies.username),
             (err, result) => {
                 res.render("user/edit_profile", { account: result[0] });
             }
@@ -36,7 +43,7 @@ class ProfileController {
         }
 
         db.execute(
-            Account.updateAccount(
+            Accounts.updateAccount(
                 username,
                 password,
                 email,

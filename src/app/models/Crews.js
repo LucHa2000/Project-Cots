@@ -24,24 +24,8 @@ class Crew {
         return sql;
     }
     static delete(crew_name) {
-            let sql = `DELETE FROM crews where crew_name= '${crew_name}'`;
-            return sql;
-        }
-        // static updateAccount(
-        //     username,
-        //     acc_password,
-        //     email,
-        //     first_name,
-        //     last_name,
-        //     birthday,
-        //     bio,
-        //     job,
-        //     avatar
-        // ) {
-        //     let sql = `update accounts set acc_password = "${acc_password}", email = "${email}",avatar = "${avatar}",first_name="${first_name}"
-        //    ,last_name="${last_name}",bio = "${bio}",birthday = "${birthday}",job = "${job}"
-        //    where username = "${username}"`;
-        //     return sql;
-        // }
+        let sql = `DELETE FROM crews where crew_name= '${crew_name}'`;
+        return sql;
+    }
 }
 module.exports = Crew;

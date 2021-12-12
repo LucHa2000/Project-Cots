@@ -49,6 +49,7 @@ $(document).ready(() => {
         socket.emit("revider", $(this).text());
         $("#container-chat-private").show();
         $("#container-chat-group").hide();
+        $(".main-joined-group").hide();
         $("#chat-content").html("");
     });
     //send message

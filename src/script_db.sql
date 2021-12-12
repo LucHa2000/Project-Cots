@@ -121,3 +121,10 @@ ADD joined_avatar varchar(255);
 ADD CONSTRAINT FK_crew_account
 FOREIGN KEY (member_username) REFERENCES accounts(username);
 
+
+
+ALTER TABLE posts
+ADD post_img varchar(200)
+ALTER TABLE posts
+ADD  userpost_img varchar(200)
+

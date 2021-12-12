@@ -4,9 +4,9 @@
     <div class="col s12">
       <ul class="tabs center">
         <li class="tab col s3"><a class="active" href="#test1">Following</a></li>
-        <li class="tab col s3"><a  href="#test2">Follower</a></li>
+        <li class="tab col s3"><a href="#test2">Follower</a></li>
         <li class="tab col s3"><a href="#test3"> My Group</a></li>
-        <li class="tab col s3"><a href="#test4">Group Following</a></li>
+        <li class="tab col s3"><a href="#test4">Group Joined</a></li>
       </ul>
     </div>
     <div class="container">
@@ -20,8 +20,10 @@
                 {{this.follower_username}}
               </p>
             </div>
-            
-            <button class="btn btn-active center">Unfollow</button>
+            <div class="action">
+            <button class="btn btn-active center">Detail</button>
+            <a class="btn btn-active" onclick="return alert('action success !')" href="/unfollow/{{this.follower_username}}" style="margin-left:20px">unfollow</a>
+            </div>
           </li>
         {{/each}}
       </ul>
@@ -29,16 +31,24 @@
     <div id="test2" class="col s12">
       <ul>
         {{#each followers}}
+         
           <li class="collection-member-chat">
-            {{!-- <img class="circle" src="../uploads/{{this.avatar}}" /> --}}
-            <p>
-              {{this.username}}
-            </p>
+           <div class="left">
+              <img class="circle" src="../uploads/{{this.follower_avatar}}" />
+              <p>
+                  {{this.username}}
+              </p>
+            </div>
+             <div class="action">
+            <button class="btn btn-active center">Detail</button>
+            <a class="btn btn-active" onclick="return alert('action success !')"  href="/follow/{{this.username}}" style="margin-left:20px">follow</a>
+            </div>
           </li>
         {{/each}}
       </ul>
     </div>
     <div id="test3" class="col s12">
+         <a href="#add-group" class="btn btn-active center modal-trigger">Add Group</a>
       <ul>
         {{#each myGroup}}
           <li class="collection-member-chat">
@@ -48,8 +58,7 @@
                 {{this.crew_name}}
               </p>
             </div>
-            
-            <a
+            <a onclick="return confirm('Are you sure delete ?')"
               class="btn btn-active center"
               href="/crew/{{this.crew_name}}/delete"
             >Delete</a>
@@ -62,12 +71,12 @@
         {{#each memberGroup}}
           <li class="collection-member-chat">
             <div class="left">
-              <img class="circle" src="../uploads/{{this.avatar}}" />
+              <img class="circle" src="../uploads/{{this.joined_avatar}}" />
               <p>
                 {{this.crew_name}}
               </p>
             </div>
-            <button class="btn btn-active center">Leave</button>
+            <a class= "btn btn-active" onclick="return alert('action success !')"  href="/leave/{{this.crew_name}}" style="margin-left:20px">Leave</a>
           </li>
         {{/each}}
       </ul>
@@ -75,3 +84,37 @@
   </div>
 </div>
 </div>
+{{!-- modal add group --}}
+  <div id="add-group" class="modal">
+    <div class="modal-content">
+      <h4>Create Group</h4>
+  <div class="row">
+    <form class="col s12"  action="/crew/add" method="POST" enctype="multipart/form-data">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="group_name" type="text" class="validate" name="crew_name">
+          <label for="group_name">Group Name</label>
+        </div>
+      </div>
+        <div class="row">
+        <div class="input-field col s12">
+          <input id="title" type="text" class="validate" name="crew_title">
+          <label for="title">Title</label>
+        </div>
+      </div>
+      <div class="row">
+          <div class="file-field input-field">
+      <div class="btn">
+        <span>Avatar</span>
+        <input type="file" name="image">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+         </div>
+      </div>
+      <button onclick="return alert('Create Group successfully !')" class="btn center" type="submit"> Create </button>
+    </form>
+  </div>
+    </div>
+  </div>
