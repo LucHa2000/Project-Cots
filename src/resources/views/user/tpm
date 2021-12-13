@@ -44,3 +44,268 @@
   </div>
 </div>
 --}}
+
+
+{{!-- <style>
+  .dropdown-content{
+    display:none;
+  }
+</style>
+<div class="create-container">
+<div class="table-foods container">
+     <div class="row">
+   <div class="col s12 push-l3">
+     <ul class="tabs ">
+       <li class="tab col s3"><a href="#addproduct">Add Product</a></li>
+       <li class="tab col s3"><a class="active" href="#listproduct">Product Management</a></li>
+     
+     </ul>
+   </div>
+   <div id="addproduct" class="">
+     <div class="paper_container z-depth-1">
+
+<form class="col s12"  method="POST" action="/store/product" enctype="multipart/form-data">
+     <div class="row">
+       <div class="input-field col s12 ">
+         <input  id="product_name" type="text" class="validate" name="product_name" required="required">
+         <label for="product_name">Name *</label>
+       <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+       </div>
+     </div>
+     <div class="row">
+       <div class="input-field col s12 ">
+         <input id="quantity" type="number" class="validate" name="quantity"  required="required"  min="1" max="10000">
+         <label for="quantity">Quantity *</label>
+          <span class="helper-text" data-error="This field must be greater than 0" data-success=""></span>
+       </div>
+     </div>
+      <div class="row">
+       <div class="input-field col s12 ">
+       <input id="cost"type="number" class="validate" name="unit_price"  required="required" min="1" />
+         <label for="cost">Price *</label>
+         <span class="helper-text" data-error="This field must be greater than 0" data-success=""></span>
+       </div>
+     </div>
+     <div class="row">
+            <div class="file-field input-field">
+     <div class="btn">
+       <span>Choose Image *</span>
+       <input type="file" name="image">
+     </div>
+     <div class="file-path-wrapper">
+       <input class="file-path validate" type="text">
+     </div>
+   </div>
+     
+  
+   </div>
+   <div class="row">
+     <div class="input-field col s12">
+   <select name="list_id">
+     <option value="" disabled selected>Choose list option</option>
+     {{#each lists}}
+     <option value="{{{this._id}}}" >{{{this.list_name}}} </option>
+     {{/each}}
+   </select>
+   <label>Select *</label>
+     </div>
+   </div>
+     <div class="row">
+       <div class="input-field col s12 ">
+         <textarea id="textarea1" class="materialize-textarea" name="note"></textarea>
+         <label for="textarea1">Note</label>
+       </div>
+     </div>
+      <button onclick="" class="btn waves-effect waves-light" type="submit">Add
+   <i class="material-icons right">send</i>
+     </button>
+   </form> 
+     </div>
+
+   </div>
+   <div id="listproduct" class=""><br>
+     <div class="paper_container z-depth-1">
+
+     {{>search}}
+ 
+      
+         
+     </div>
+
+   </div>
+  
+ </div>
+
+</div>
+</div>
+<div id="modal1" class="modal">
+   <div class="modal-content">
+     <h4 class="center">Delete Product</h4>
+     <p class="center">Do you really want to delete these records ? This process cannot be undone</p>
+   </div>
+   <div class="modal-footer">
+     <a class="modal-close waves-effect waves-green btn-flat delete-agree text-darken-2 red-text">Yes, do it</a>
+     <a class="modal-close waves-effect waves-green btn-flat  grey-text">No, cancel </a>
+   </div>
+ </div>    
+<script>
+$(document).ready(function(){
+   $(".btn_delete").on("click", function(){
+       var dataId = $(this).attr("data-id");
+       var listId = $(this).attr("data-list");
+         $(".delete-agree").attr("href", "/store/"+listId+"/"+dataId); // Set herf value
+   });
+   
+});
+</script>
+
+
+  {{>footer_admin}} --}}
+
+
+
+  {{>header_admin}}
+ 
+<div class=" admin-container create-container">
+  <div class=" container">
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs ">
+          <li class="tab col s3"><a href="#add-account">ADD ACCOUNT</a></li>
+          <li class="tab col s3"><a class="active" href="#account-management">ACCOUNT MANAGEMENT</a></li>
+        </ul>
+      </div>
+      <div id="add-account" class="">
+        <div class="paper_container z-depth-1">
+          <form class="col s12" action="/account/register" method="POST">
+            <h4 class="center">CREATE AN ACCOUNT</h4>
+            <div class="row">
+              <div class="input-field col s10 m10 push-l1">
+                <input id="email" type="email" class="validate" name="email" required="required">
+                <label for="email">Email*</label>
+                <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+              </div>
+              <div class="input-field col s10 m10 push-l1">
+                <input id="last_name" type="text" class="validate" name="full_name" required="required">
+                <label for="last_name">Full Name *</label>
+                <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s10 m10 push-l1">
+                <input id="phone_number" type="tel" class="validate" name="phone_number" required="required">
+                <label for="phone_number">Phone Number*</label>
+                <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s10 m10 push-l1">
+                <input id="password" type="password" class="validate" name="password" required="required" minlength="6" >
+                <label for="password">Password*</label>
+                <span class="helper-text" data-error="Password minimum 6 characters" data-success=""></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s10 m10 push-l1">
+                <input id="confirm_password" type="password" class="validate" required="required"  >
+                <label for="confirm_password">Confirm Password *</label>
+                <span class="helper-text" data-error="Passwords don't match" data-success=""></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s10 m10 push-l1 mr-bottom">
+                <button class="btn waves-effect waves-light " type="submit">Signup
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+           
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="account-management" class=""><br>
+        <div class="paper_container z-depth-1">
+          <table class="centered responsive-table right highlight " >
+            <thead>
+              <tr>           
+                <th>No</th>   
+                <th>Username</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>First name</th>
+                <th>Last name</th>   
+                <th>Birthday</th>
+                <th>Gender</th>
+                <th>Bio</th>
+                <th>Job</th>
+                <th>Status</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody id="myTable">
+              {{#each accounts}}
+                <tr>
+                  <td></td>
+                  <td>{{this.username}}</td>
+                  <td>{{this.acc_password}}</td>
+                  <td class="">{{this.email}}</td>
+                  <td class="">{{this.first_name}}</td>
+                  <td>{{this.last_name}}</td>      
+                  <td>{{this.birthday}}</td>
+                  <td>{{this.gender}}</td>
+                  <td>{{this.bio}}</td>
+                  <td>{{this.job}}</td>
+                  <td>{{this.acc_status}}</td>
+                  <td>{{this.acc_type_id}}</td>
+                </tr>
+              {{else}}
+                <tr>
+                  <td colspan="6" class="center text-center">
+                    There is no accounts in database, please create new accounts on CREATE ACCOUNT tab
+                  </td>
+                </tr>
+              {{/each}}   
+            </tbody>
+          </table> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  {{!-- <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Delete Account</h4>
+      <p class="center">Do you really want to delete these records ?</p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat delete-agree text-darken-2 red-text">Yes, do it</a>
+      <a class="modal-close waves-effect waves-green btn-flat  grey-text">No, cancel </a>
+    </div>
+  </div>     --}}
+<script>
+ $(document).ready(function(){
+    $(".btn_delete").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".delete-agree").attr("href", "/account/delete/"+dataId); // Set herf value
+    $('.tabs').tabs();
+  });
+    });
+});
+</script>
+
+   <script>
+      var password = document.getElementById("password")
+      var confirm_password = document.getElementById("confirm_password");
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords don't match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+    </script>
+   {{>footer_admin}}
+
