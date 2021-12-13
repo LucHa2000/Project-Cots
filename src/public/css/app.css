@@ -281,7 +281,7 @@ table {
 
 /* ------------------------------------ */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 :root {
   --btn-active: #43489a;
   --btn-inactive: #3c3a3a;
@@ -461,7 +461,7 @@ body {
 
 .navbar .nav-link {
   padding: 0 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 15px;
   box-sizing: border-box !important;
   color: var(--primary-color);
