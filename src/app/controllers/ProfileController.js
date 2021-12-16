@@ -28,7 +28,12 @@ class ProfileController {
             );
         });
     }
-    editPage(req, res, next) {}
+    editPage(req, res, next) {
+        let username = req.cookies.username;
+        db.execute(Accounts.findByTag("username", username), (err, result) => {
+            res.render("user/edit_profile", { account: result[0] });
+        });
+    }
     update(req, res, next) {
         let username = req.cookies.username;
         let password = req.body.password;
