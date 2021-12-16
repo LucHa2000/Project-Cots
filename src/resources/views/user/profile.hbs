@@ -16,13 +16,13 @@
           <img src="../uploads/{{this.userpost_img}}" alt="" class="post-info-avatar">
           <span class="post-info-username">@{{this.username}}</span>
         </div>
-        
-        <span class="post-info-date">{{this.post_date}}</span>
+        <a class='dropdown-trigger btn btn-active function-more-post'data-id="{{this.post_id}}" href='#' data-target='manament-newsfeed'>...</a>
       </div>
+      <span class="post-info-date">{{converDateNewsfeed this.post_date}}</span>
       <div class="post-content">
         <h2>{{this.post_content}}</h2>
         <div class="post-img">
-          <img src="../uploads/{{this.post_img}}" alt="">
+          <img src="../uploads/{{nonImage this.post_img}}">
         </div>
       </div>
       <div class="post-footer">
@@ -30,20 +30,13 @@
           <a href="#" class="material-icons">favorite</a>
           {{!-- <a href="#" class="material-icons">favorite_border</a> --}}
           <p><span>@nhandang, @havietluc</span> and <span>3</span> others liked this post</p>
-          
         </div>
         <div class="post-comments-container">
           <div class="post-comment">
-            <div class="post-comment-username"><a href="">@havietluc</a> </div>
+            <div class="post-comment-username">
+              <a href="">@havietluc</a> 
+            </div>
             <div class="post-comment-content">Why?</div>
-          </div>
-          <div class="post-comment">
-            <div class="post-comment-username"><a href="">@nhandang</a> </div>
-            <div class="post-comment-content">I don't know</div>
-          </div>
-          <div class="post-comment">
-            <div class="post-comment-username"><a href="">@dinhthanhphong</a></div>
-            <div class="post-comment-content">Hmmm....</div>
           </div>
           <form class="post-input-form" action="">
             <div class="input-field">
@@ -55,4 +48,20 @@
       </div>
     </div>
     {{/each}}
-    
+  <!-- Dropdown Structure -->
+    <ul id='manament-newsfeed' class='dropdown-content'>
+    <li><a onclick="return confirm('Are you sure delete this post ?')" href="" class="btn-post-delete"><i class="material-icons">view_module</i>Delete</a></li>
+    <li><a href="" class="btn-post-edit"><i class="material-icons">cloud</i>Edit</a></li>
+  </ul>
+<script>
+ $(document).ready(function(){
+    $(".function-more-post").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".btn-post-delete").attr("href", "/post/delete/"+dataId)
+    });
+        $(".function-more-post").on("click", function(){
+        var dataId = $(this).attr("data-id");
+        $(".btn-post-edit").attr("href", "/post/"+dataId +"/edit"); // Set herf value
+    });
+});
+</script>

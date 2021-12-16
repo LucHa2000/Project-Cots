@@ -11,13 +11,6 @@
       <div class="search-right col m9">
          <div class="mid-home ">
        <div class="row">
-    {{!-- <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3"><a href="#profile">Profile</a></li>
-        <li class="tab col s3"><a class="" href="#pages">Pages</a></li>
-        <li class="tab col s3"><a href="#groups">Groups</a></li>
-      </ul>
-    </div> --}}
     <div id="profile" class="col s12">
     <ul >
       <div class="search-container">
@@ -34,7 +27,7 @@
           </div>
           <div class="right">
             <a class="btn btn-active" onclick="return alert('action success !')"  href="/{{followCustomer follow}}/{{this.username}}" style="margin-left:20px">{{followCustomer follow}}</a>
-              <a class= "btn btn-active" href="/inbox" style="margin-left:20px">Detail</a>
+              <a class= "btn btn-active" href="/friends/{{this.username}}" style="margin-left:20px">Information</a>
           </div>
         
         </div>

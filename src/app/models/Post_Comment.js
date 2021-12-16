@@ -1,5 +1,5 @@
 const db = require("../../config/db");
-class Post {
+class Post_Comment {
     static save(username, post_content, post_status, post_img, userpost_img) {
         let d = new Date();
         let yyyy = d.getFullYear();
@@ -37,4 +37,4 @@ class Post {
         return sql;
     }
 }
-module.exports = Post;
+module.exports = Post_Comment;

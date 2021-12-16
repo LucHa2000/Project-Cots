@@ -1,0 +1,97 @@
+{{>header}}
+
+
+  <main id="main" class="detai-post-container container">
+    <div class="row">
+        <div class="col s12 push-l2">
+             <div id="to-scroll-when-comment" class="post-card">
+      <div class="post-info">
+        <div class="left">
+          <img src="../uploads/{{post.userpost_img}}" alt="" class="post-info-avatar">
+          <span class="post-info-username">@{{post.username}}</span>
+        </div>
+      </div>
+        <span class="post-info-date right">{{converDateNewsfeed post.post_date}}</span>
+      <div class="post-content" >
+        <h2>{{post.post_content}}</h2>
+        <div class="post-img center" >
+          <img src="../uploads/{{nonImage post.post_img}}">
+        </div>
+      </div>
+      <div class="post-footer">
+        <div class="post-reacts">
+          <a data-id ={{post.post_id}} class=" modal-trigger btn-react"  href="#icon-modal">
+            <img src="../emoticon/{{ emotionReact icon_id}}" style=""  alt="">
+          </a>
+           <a id="link-post" class=" modal-trigger btn-react"  href="/post/{{post.post_id}}">
+            <img src="../emoticon/cmt-icon.png" style=""  alt="">
+          </a>
+           <a  class=" modal-trigger btn-react"  onclick="copyToClipboard('#link-post')">
+            <img src="../emoticon/share-icon.png" style=""  alt="">
+              
+          </a>
+          
+          {{!-- <p><span>@nhandang, @havietluc</span> and <span>3</span> others liked this post</p> --}}
+        </div>
+         <p> <span>{{post.countReact}}</span> reacted this post</p>
+        <div class="post-comments-container" style= "text-align:left ">
+          <div class="post-comment ">
+            <div class="post-comment-username">
+               <img style="height: 30px; user-select: auto;" src="../uploads/avatar.png" class="img-circle" alt="">
+              <a href="">@havietluc</a>
+               </div>
+            <div class="post-comment-content">Why?</div>
+          </div>
+          <div class="post-comment ">
+            <div class="post-comment-username"><a href="">@nhandang</a> </div>
+            <div class="post-comment-content">I don't know</div>
+          </div>
+          <form class="post-input-form" action="">
+            <div class="input-field">
+            <input type="text" placeholder="Enter comment...">
+            </div>
+            <button type="submit" class="btn-active"><span class="material-icons">send</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </main>
+{{!-- modal react icon --}}
+<div id="icon-modal" class="modal" style="background : transparent">
+  <div class="modal-fixed-footer center ">
+    {{!-- <h4 class="center">Emoticon</h4> --}}
+    <a href="" class="btn-react-heart">
+      <img   class='image-emotion-react-post modal-close' src='../emoticon/red-heart_2764-fe0f.png'>
+    </a>
+    <a href="" class="btn-react-like">
+       <img class='image-emotion-react-post modal-close' src='../emoticon/like-react.png' >
+    </a>
+   <a href="" class="btn-react-smile">
+      <img class='image-emotion-react-post modal-close' src='../emoticon/haha-react.png' >
+   </a>
+    </div>
+</div>
+{{!-- display img when add --}}
+<script>
+ $(document).ready(function(){
+    $(".btn-react").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".btn-react-heart").attr("href", "/post/react/1/"+dataId)
+    });
+       $(".btn-react").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".btn-react-like").attr("href", "/post/react/2/"+dataId)
+    });
+      $(".btn-react").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".btn-react-smile").attr("href", "/post/react/3/"+dataId)
+    });
+});
+</script>
+<script src="../script/share_post.js">
+</script>
+
+    
+  

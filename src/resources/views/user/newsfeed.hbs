@@ -11,22 +11,30 @@
                    <img style="height:100px"src="../uploads/{{avatar}}"  alt="">
                 </div>
                 <div class="input-field col s8">
-                  <textarea id="textarea1" class="materialize-textarea" name="post_content" required></textarea>
+                  <textarea id="textarea1" class="materialize-textarea post-input-newsfeed" name="post_content" required></textarea>
                    <label for="textarea1">@{{username}}, What are you thinking ?</label>
                  </div>
                 </div>
                     <div class="row">
-                    <div class="file-field input-field col s5 m12" id="wrapper">
+                    <div class="file-field input-field col s3 m3 push-l4" id="wrapper">
                      <div class="btn btn-active">
-                     <span>Add Image</span>
-                     <input  id="fileUpload"  type="file" name="image" multiple="multiple" required>
-                         </div>
-                        <div class="file-path-wrapper">
-                         <input hidden  class="file-path validate" type="text" value="" >
-                       </div>
-                             <div id="image-holder"></div>
-                       </div>
-                  </div>
+                        <span> <i class="material-icons">image</i></span>  
+                          
+                        <input  id="fileUpload"  type="file" name="image" multiple="multiple" >
+                          </div>
+
+                          {{!-- update video --}}
+                          {{!-- <div class="btn btn-active">
+                          <span> <i class="material-icons">video_call</i></span>
+                          <input  id="fileUpload"  type="file" name="image" multiple="multiple" required>
+                          </div> --}}
+                          
+                          <div class="file-path-wrapper">
+                                <input hidden  class="file-path validate" type="text" value="" >
+                          </div>
+                            <div id="image-holder"></div>
+                      </div>  
+                  </div>               
                  <div class="card-action">
                     <button class="btn btn-active" type="submit">Post</button>
                  </div>
@@ -44,81 +52,67 @@
           <span class="post-info-username">@{{this.username}}</span>
         </div>
         
-        <span class="post-info-date">{{this.post_date}}</span>
       </div>
-      <div class="post-content">
+        <span class="post-info-date right">{{converDateNewsfeed this.post_date}}</span>
+      <div class="post-content" >
         <h2>{{this.post_content}}</h2>
-        <div class="post-img">
-          <img src="../uploads/{{this.post_img}}" >
+        <div class="post-img center" >
+          <img src="../uploads/{{nonImage this.post_img}}">
         </div>
       </div>
       <div class="post-footer">
         <div class="post-reacts">
-          <a href="#" class="material-icons">favorite</a>
-          {{!-- <a href="#" class="material-icons">favorite_border</a> --}}
-          <p><span>@nhandang, @havietluc</span> and <span>3</span> others liked this post</p>
-          
+          <a data-id ={{this.post_id}} class=" modal-trigger btn-react"  href="#icon-modal">
+            <img src="../emoticon/{{ emotionReact this.react_img}}" style=""  alt="">
+          </a>
+          <a id="link-post" class=" modal-trigger btn-react"  href="/post/{{this.post_id}}">
+            <img src="../emoticon/cmt-icon.png" style=""  alt="">
+          </a>
+           <a  class=" modal-trigger btn-react"  onclick="copyToClipboard('#link-post')">
+            <img src="../emoticon/share-icon.png" style=""  alt="">
+          </a> 
+          {{!-- <p><span>@nhandang, @havietluc</span> and <span>3</span> others liked this post</p> --}}
         </div>
-        <div class="post-comments-container">
-          <div class="post-comment">
-            <div class="post-comment-username"><a href="">@havietluc</a> </div>
-            <div class="post-comment-content">Why?</div>
-          </div>
-          <div class="post-comment">
-            <div class="post-comment-username"><a href="">@nhandang</a> </div>
-            <div class="post-comment-content">I don't know</div>
-          </div>
-          <div class="post-comment">
-            <div class="post-comment-username"><a href="">@dinhthanhphong</a></div>
-            <div class="post-comment-content">Hmmm....</div>
-          </div>
-          <form class="post-input-form" action="">
-            <div class="input-field">
-            <input type="text" placeholder="Enter comment...">
-            </div>
-            <button type="submit" class="btn-active"><span class="material-icons">send</span></button>
-          </form>
-        </div>
+         <p style="text-align: left;margin-top:10px"> <span>{{this.countReact}}</span> reacted this post</p>
       </div>
     </div>
     {{/each}}
   </main>
 </div>  
+{{!-- modal react icon --}}
+<div id="icon-modal" class="modal" style="background : transparent">
+  <div class="modal-fixed-footer center ">
+    {{!-- <h4 class="center">Emoticon</h4> --}}
+    <a href="" class="btn-react-heart">
+      <img   class='image-emotion-react-post modal-close' src='../emoticon/red-heart_2764-fe0f.png'>
+    </a>
+    <a href="" class="btn-react-like">
+       <img class='image-emotion-react-post modal-close' src='../emoticon/like-react.png' >
+    </a>
+   <a href="" class="btn-react-smile">
+      <img class='image-emotion-react-post modal-close' src='../emoticon/haha-react.png' >
+   </a>
+   
+    </div>
+</div>
+{{!-- display img when add --}}
+<script src="../script/display_img.js"></script>
 <script>
-$(document).ready(function() {
-        $("#fileUpload").on('change', function() {
-          //Get count of selected files
-          var countFiles = $(this)[0].files.length;
-          var imgPath = $(this)[0].value;
-          var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
-          var image_holder = $("#image-holder");
-          image_holder.empty();
-          if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
-            if (typeof(FileReader) != "undefined") {
-              //loop for each file selected for uploaded.
-              for (var i = 0; i < countFiles; i++) 
-              {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                  $("<img />", {
-                    "src": e.target.result,
-                    "class": "thumb-image"
-                  }).appendTo(image_holder);
-                }
-                image_holder.show();
-                reader.readAsDataURL($(this)[0].files[i]);
-              }
-            } else {
-              alert("This browser does not support FileReader.");
-            }
-          } else {
-            alert("Pls select only images");
-          }
-        });
-      });
+ $(document).ready(function(){
+    $(".btn-react").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".btn-react-heart").attr("href", "/post/react/1/"+dataId)
+    });
+       $(".btn-react").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".btn-react-like").attr("href", "/post/react/2/"+dataId)
+    });
+      $(".btn-react").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".btn-react-smile").attr("href", "/post/react/3/"+dataId)
+    });
+});
 </script>
+<script src="../script/share_post.js"></script>
 
- 
-
-    
   

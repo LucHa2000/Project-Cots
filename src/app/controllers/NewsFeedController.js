@@ -3,16 +3,31 @@ const router = express.Router();
 const db = require("../../config/db");
 const Account = require("../models/Account");
 const Posts = require("../models/Posts");
+const Post_React = require("../models/Post_React");
 class NewsFeedController {
+    // newsfeed page
     index(req, res, next) {
-        let username = req.cookies.username;
-        db.execute(Account.findAll(), function(err, result) {
-            if (err) throw err;
+            let username = req.cookies.username;
             db.execute(Posts.findPeopleFollow(username), (err, posts) => {
-                res.render("user/newsfeed", { user: result, posts: posts });
+                db.execute(
+                    Post_React.findReactByUsername(username),
+                    (err, postWithReacts) => {
+                        posts.forEach((post) => {
+                            postWithReacts.forEach((postReact) => {
+                                if (
+                                    postReact.username == username &&
+                                    post.post_id == postReact.post_id
+                                ) {
+                                    post.react_img = postReact.icon_id;
+                                }
+                            });
+                        });
+                        res.render("user/newsfeed", { posts: posts });
+                    }
+                );
             });
-        });
-    }
+        }
+        //posts
     post(req, res, next) {
         let username = req.cookies.username;
         let post_content = req.body.post_content;
@@ -23,7 +38,6 @@ class NewsFeedController {
             var post_img = req.file.path.split("\\").slice(3).join();
         }
         db.execute(Account.findByTag("username", username), (err, account) => {
-            // userpost_img = account[0].avatar;
             db.execute(
                 Posts.save(
                     username,

@@ -5,6 +5,7 @@ const Crew = require("../models/Crews");
 const Followers = require("../models/Followers");
 const Accounts = require("../models/Account");
 const Crew_members = require("../models/Crew_members");
+const Posts = require("../models/Posts");
 
 class FriendsController {
     //page friends
@@ -40,7 +41,15 @@ class FriendsController {
         db.execute(
             Accounts.findByTag("username", usernameFriend),
             (err, account) => {
-                res.render("user/infor_friend", { account: account[0] });
+                db.execute(
+                    Posts.findByTag("username", usernameFriend),
+                    (err, posts) => {
+                        res.render("user/infor_friend", {
+                            account: account[0],
+                            posts: posts,
+                        });
+                    }
+                );
             }
         );
     }
