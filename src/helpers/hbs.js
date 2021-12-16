@@ -12,6 +12,14 @@ module.exports = {
             return "red-heart_2764-fe0f.png";
         } else if (a == 2) {
             return "like-react.png";
+        } else if (a == 3) {
+            return "haha-react.png";
+        } else if (a == 4) {
+            return "angry-icon.png";
+        } else if (a == 5) {
+            return "lovelove-icon.png";
+        } else if (a == 6) {
+            return "cry-icon.png";
         } else {
             return "white-heart.png";
         }

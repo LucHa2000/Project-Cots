@@ -92,6 +92,15 @@
    <a href="" class="btn-react-smile">
       <img class='image-emotion-react-post modal-close' src='../emoticon/haha-react.png' >
    </a>
+    <a href="" class="btn-react-angry">
+      <img class='image-emotion-react-post modal-close' src='../emoticon/angry-icon.png' >
+   </a>
+    <a href="" class="btn-react-lovelove">
+      <img class='image-emotion-react-post modal-close' src='../emoticon/lovelove-icon.png' >
+   </a>
+    <a href="" class="btn-react-cry">
+      <img class='image-emotion-react-post modal-close' src='../emoticon/cry-icon.png' >
+   </a>
    
     </div>
 </div>
@@ -110,6 +119,18 @@
       $(".btn-react").on("click", function(){
         var dataId = $(this).attr("data-id");
           $(".btn-react-smile").attr("href", "/post/react/3/"+dataId)
+    });
+     $(".btn-react").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".btn-react-angry").attr("href", "/post/react/4/"+dataId)
+    });
+     $(".btn-react").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".btn-react-lovelove").attr("href", "/post/react/5/"+dataId)
+    });
+     $(".btn-react").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".btn-react-cry").attr("href", "/post/react/6/"+dataId)
     });
 });
 </script>
