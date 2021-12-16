@@ -4,29 +4,31 @@ var moment = require("moment");
 const db = require("../../config/db");
 const Accounts = require("../models/Account");
 const Posts = require("../models/Posts");
-
+const Post_React = require("../models/Post_React");
 class ProfileController {
     index(req, res, next) {
-        db.execute(
-            Accounts.findByTag("username", req.cookies.username),
-            (err, result) => {
-                db.execute(
-                    Posts.findByTag("username", req.cookies.username),
-                    (err, myPosts) => {
-                        res.render("user/profile", { account: result[0], posts: myPosts });
-                    }
-                );
-            }
-        );
+        let username = req.cookies.username;
+        db.execute(Posts.findByTag("username", username), (err, posts) => {
+            db.execute(
+                Post_React.findReactByUsername(username),
+                (err, postWithReacts) => {
+                    posts.forEach((post) => {
+                        postWithReacts.forEach((postReact) => {
+                            if (
+                                postReact.username == username &&
+                                post.post_id == postReact.post_id
+                            ) {
+                                post.react_img = postReact.icon_id;
+                            }
+                        });
+                    });
+                    // console.log(posts);
+                    res.render("user/profile", { posts: posts });
+                }
+            );
+        });
     }
-    editPage(req, res, next) {
-        db.execute(
-            Accounts.findByTag("username", req.cookies.username),
-            (err, result) => {
-                res.render("user/edit_profile", { account: result[0] });
-            }
-        );
-    }
+    editPage(req, res, next) {}
     update(req, res, next) {
         let username = req.cookies.username;
         let password = req.body.password;

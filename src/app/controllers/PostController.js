@@ -9,9 +9,12 @@ class PostsController {
         //delete post
         // route : /post/delete/:post_id
     deletePost(req, res, next) {
+            console.log(req.params.post_id);
             let postId = req.params.post_id;
-            db.execute(Posts.delete(postId), (err, result) => {
-                res.redirect("back");
+            db.execute(Post_React.deleteWithPostId(postId), (err, result) => {
+                db.execute(Posts.delete(postId), (err, result) => {
+                    res.redirect("back");
+                });
             });
         }
         //render edit post

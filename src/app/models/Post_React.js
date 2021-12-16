@@ -25,8 +25,14 @@ class Post_React {
         let sql = `DELETE FROM post_reacts where post_id= '${post_id}' and username='${username}' and icon_id = "${icon_id}"`;
         return sql;
     }
+    static deleteWithPostId(post_id) {
+        let sql = `DELETE FROM post_reacts where post_id= '${post_id}'`;
+        return sql;
+    }
     static countPostReact(post_id) {
-        let sql = `SELECT COUNT(*) as total FROM post_reacts where post_id = ${post_id}`;
+        let sql = `
+            SELECT COUNT( * ) as total FROM post_reacts where post_id = $ { post_id }
+            `;
         return sql;
     }
 }
