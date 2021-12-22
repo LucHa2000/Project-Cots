@@ -15,7 +15,9 @@
         <div class="left">
           <img src="../uploads/{{this.userpost_img}}" alt="" class="post-info-avatar">
           <span class="post-info-username">@{{this.username}}</span>
+          <span  class="post-info-username "><img style="height : 16px" class='image-emotion-react-post modal-close' src='../emoticon/{{iconRulePost this.post_status}}' ></span>
         </div>
+         
         <a class='dropdown-trigger btn btn-active function-more-post'data-id="{{this.post_id}}" href='#' data-target='manament-newsfeed'>...</a>
       </div>
       <span class="post-info-date">{{converDateNewsfeed this.post_date}}</span>
@@ -62,6 +64,7 @@
     <ul id='manament-newsfeed' class='dropdown-content'>
     <li><a onclick="return confirm('Are you sure delete this post ?')" href="" class="btn-post-delete"><i class="material-icons">view_module</i>Delete</a></li>
     <li><a href="" class="btn-post-edit"><i class="material-icons">cloud</i>Edit</a></li>
+    <li><a href="" class="btn-switch"><i class="material-icons">sun</i>Switch Status</a></li>
   </ul>
 <script>
  $(document).ready(function(){
@@ -72,6 +75,10 @@
         $(".function-more-post").on("click", function(){
         var dataId = $(this).attr("data-id");
         $(".btn-post-edit").attr("href", "/post/"+dataId +"/edit"); // Set herf value
+    });
+       $(".function-more-post").on("click", function(){
+        var dataId = $(this).attr("data-id");
+        $(".btn-switch").attr("href", "/post/"+dataId +"/switch"); // Set herf value
     });
 });
 </script>

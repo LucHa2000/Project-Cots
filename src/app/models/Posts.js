@@ -21,10 +21,14 @@ class Post {
         let sql = `SELECT * FROM posts Where ${tag} = "${value}" order by post_date desc`;
         return sql;
     }
+    static findByTagAndSatus(tag, value) {
+        let sql = `SELECT * FROM posts Where ${tag} = "${value}" and post_status = 1 order by post_date desc`;
+        return sql;
+    }
     static findPeopleFollow(username) {
         let sql = `select * from posts
         where username in (select follower_username from followers where username = "${username}") or username = "${username}"
-        order by post_date desc
+       and post_status = 1 order by post_date desc
         `;
         return sql;
     }
@@ -34,6 +38,10 @@ class Post {
     }
     static updateCountReact(post_id, number) {
         let sql = `update posts set countReact = countReact + (${number}) where post_id = ${post_id}`;
+        return sql;
+    }
+    static updateStatus(post_id, value) {
+        let sql = `update posts set post_status = ${value} where post_id = ${post_id}`;
         return sql;
     }
 }

@@ -7,6 +7,7 @@ const crewRouter = require("./crew");
 const adminRouter = require("./admin");
 const friendsRouter = require("./friends");
 const postsRouter = require("./post");
+const commentRouter = require("./comment");
 const authMiddlewares = require("../app/middlewares/AuthMiddlewares");
 
 function router(app) {
@@ -47,6 +48,12 @@ function router(app) {
         authMiddlewares.checkAccount,
         authMiddlewares.checkRoleUser,
         postsRouter
+    );
+    app.use(
+        "/comment",
+        authMiddlewares.checkAccount,
+        authMiddlewares.checkRoleUser,
+        commentRouter
     );
     app.use(
         "/",

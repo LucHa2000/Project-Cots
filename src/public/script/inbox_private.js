@@ -5,8 +5,8 @@ var sender = "";
 //listening private emotion
 socket.on("new-message-private-emotion", (data) => {
     // $("#container-chat-private").show();
+    $("#container-chat-private").show();
     receiver = data.sender;
-
     $("#chat-content").append(
         '<div class="message-container-receive"><img class="image-infor-focus text-message message-icon" src ="' +
         data.message +
@@ -19,7 +19,6 @@ socket.on("new-message-private-emotion", (data) => {
 socket.on("new-message-private", (data) => {
     $("#container-chat-private").show();
     receiver = data.sender;
-    console.log(data);
     $("#chat-content").append(
         '<div class="message-container-receive"><h1></h1>' +
         data.message +
@@ -80,13 +79,13 @@ $(document).ready(() => {
     $("#message-inbox-private").focusout(() => {
         socket.emit("user-write-stop");
     });
-    //
+    //send icon
 
     $(".image-emotion").click(function(event) {
         var message = $(this).attr("src");
         socket.emit("content-emotion", {
             message: message,
-            receiver: receiver,
+            receiver: receiver.trim(),
             sender: sender,
         });
         $("#chat-content").append(

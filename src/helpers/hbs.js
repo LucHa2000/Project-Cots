@@ -25,6 +25,7 @@ module.exports = {
         }
     },
     converDateNewsfeed: (a) => moment(a).format("LLL"),
+    iconRulePost: (a) => (a == 1 ? "world-icon.png" : "locked-icon.png"),
     sum: (a) => (a == a ? a + 1 : a), //create helpers
     convertGender: (a) => (a == 1 ? "Male" : "Female"),
     status: (a) => (a == 1 ? "Activity" : "Block"),

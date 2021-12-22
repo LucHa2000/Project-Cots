@@ -42,7 +42,7 @@ class FriendsController {
             Accounts.findByTag("username", usernameFriend),
             (err, account) => {
                 db.execute(
-                    Posts.findByTag("username", usernameFriend),
+                    Posts.findByTagAndSatus("username", usernameFriend),
                     (err, posts) => {
                         res.render("user/infor_friend", {
                             account: account[0],

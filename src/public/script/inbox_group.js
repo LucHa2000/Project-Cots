@@ -88,7 +88,7 @@ $(document).ready(() => {
         $("#notification-focus").css("bottom: 0;");
     });
     //send emotion
-    $(".image-emotion").click(function(event) {
+    $(".image-emotion-group").click(function(event) {
         var message = $(this).attr("src");
         socket.emit("content-emotion-group", {
             message: message,

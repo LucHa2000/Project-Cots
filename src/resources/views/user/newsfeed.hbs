@@ -15,25 +15,22 @@
                    <label for="textarea1">@{{username}}, What are you thinking ?</label>
                  </div>
                 </div>
-                    <div class="row">
-                    <div class="file-field input-field col s3 m3 push-l4" id="wrapper">
+                    <div class="row">    
+                    <div class="file-field input-field col s1 m1 push-l4" id="wrapper">
+                       
                      <div class="btn btn-active">
                         <span> <i class="material-icons">image</i></span>  
-                          
+
                         <input  id="fileUpload"  type="file" name="image" multiple="multiple" >
                           </div>
-
-                          {{!-- update video --}}
-                          {{!-- <div class="btn btn-active">
-                          <span> <i class="material-icons">video_call</i></span>
-                          <input  id="fileUpload"  type="file" name="image" multiple="multiple" required>
-                          </div> --}}
-                          
                           <div class="file-path-wrapper">
                                 <input hidden  class="file-path validate" type="text" value="" >
                           </div>
                             <div id="image-holder"></div>
                       </div>  
+                       <div class="btn btn-active btn-post-video">
+                              <a class=" modal-trigger" href="#post-video-modal"> <i class="material-icons">video_call</i></a>
+                        </div>
                   </div>               
                  <div class="card-action">
                     <button class="btn btn-active" type="submit">Post</button>
@@ -45,13 +42,15 @@
     </div>
   <main id="main">
     {{#each posts}}
+          {{!-- <iframe width="420" height="345" src="//www.youtube.com//egSxAF-Sak4?autoplay=1"> --}}
+
+</iframe>
     <div id="to-scroll-when-comment" class="post-card">
       <div class="post-info">
         <div class="left">
           <img src="../uploads/{{this.userpost_img}}" alt="" class="post-info-avatar">
           <span class="post-info-username">@{{this.username}}</span>
         </div>
-        
       </div>
         <span class="post-info-date right">{{converDateNewsfeed this.post_date}}</span>
       <div class="post-content" >
@@ -102,6 +101,33 @@
       <img class='image-emotion-react-post modal-close' src='../emoticon/cry-icon.png' >
    </a>
    
+    </div>
+</div>
+{{!-- modal post video --}}
+<div id="post-video-modal" class="modal" style="">
+  <div class="modal-content center ">
+            <form class="col s12" action="/newsfeed/newPost" method="post"  enctype="multipart/form-data">
+               <div class="row">
+                <div class="col s4">
+                   <img style="height:100px"src="../uploads/{{avatar}}"  alt="">
+                </div>
+                <div class="input-field col s8" >
+                 <input type="text" id="content" class="validate" name="post_content" required="required" >
+                      <span class="helper-text" data-error="This field must be link" data-success="" ></span>
+                   <label for="content">@{{username}}, What are you thinking ?</label>
+                 </div>
+                </div>
+                      <div class="row">
+                    <div class="input-field col s8 m8 push-l4">
+                      <input type="text" class="validate" name="post_video" value="" required="required" id="video">
+                      <label for="video"> Link video </label>
+                      <span class="helper-text" data-error="This field must be link" data-success=""></span>
+                    </div>
+                  </div>              
+                 <div class="card-action">
+                    <button class="btn btn-active" type="submit">Post</button>
+                 </div>
+            </form>
     </div>
 </div>
 {{!-- display img when add --}}

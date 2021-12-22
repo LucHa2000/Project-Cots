@@ -1009,6 +1009,17 @@ body {
     background-color: rgb(173, 171, 171); */
 }
 
+.btn-post-video {
+    width: 50px;
+    height: 44px;
+    text-align: center;
+    transform: translate(-240%, 16px);
+}
+
+.btn-post-video i {
+    margin-top: 4px;
+}
+
 .post-reacts a:hover {
     /* background-color: rgb(61, 58, 58); */
     transform: translateY(-10px);
@@ -1028,6 +1039,11 @@ body {
 
 .post-card .post-footer .post-comments-container .post-comment {
     margin-bottom: 10px;
+}
+
+.post-card .post-footer .post-comments-container .post-comment-reply {
+    margin: 10px 30px 0px;
+    font-size: 13px;
 }
 
 .post-card .post-footer .post-comments-container .post-comment-username {

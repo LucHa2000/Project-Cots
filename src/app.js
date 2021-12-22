@@ -76,7 +76,6 @@ io.on("connection", (socket) => {
     //listening content
     socket.on("content-message", (data) => {
         var socketId = usersId[data.receiver];
-
         io.to(socketId).emit("new-message-private", data);
     });
     //listening emotion
