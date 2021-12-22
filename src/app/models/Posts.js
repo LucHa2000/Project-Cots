@@ -27,7 +27,7 @@ class Post {
     }
     static findPeopleFollow(username) {
         let sql = `select * from posts
-        where username in (select follower_username from followers where username = "${username}") or username = "${username}"
+        where username in (select follower_username from followers where username = "${username}" and post_status = 1 ) or username = "${username}"
        and post_status = 1 order by post_date desc
         `;
         return sql;

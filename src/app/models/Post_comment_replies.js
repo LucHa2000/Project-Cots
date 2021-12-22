@@ -17,6 +17,10 @@ class Post_comment_replies {
         let sql = `SELECT * FROM post_comment_replies Where ${tag} = "${value}" order by reply_date desc`;
         return sql;
     }
+    static findAll() {
+        let sql = `SELECT * FROM post_comment_replies`;
+        return sql;
+    }
     static delete(comment_id) {
         let sql = `DELETE FROM post_comment_replies where comment_id= '${comment_id}'`;
         return sql;

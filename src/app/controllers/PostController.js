@@ -85,46 +85,38 @@ class PostsController {
                         Post_Comment.findByTag("post_id", postId),
                         (err, comments) => {
                             db.execute(
-                                Post_comment_replies.findByTag("username", username),
+                                Post_comment_replies.findAll(),
                                 (err, comment_replis) => {
-                                    if (findReact.length == 0) {
-                                        res.render("user/detail_post", {
-                                            post: result[0],
-                                            icon_id: 0,
-                                            comments: comments,
+                                    comments.forEach((comment) => {
+                                        comment.reply = [];
+                                        comment_replis.forEach((comment_reply) => {
+                                            if (comment.comment_id == comment_reply.comment_id) {
+                                                comment.reply.push(comment_reply);
+                                            }
                                         });
-                                    } else {
-                                        res.render("user/detail_post", {
-                                            post: result[0],
-                                            icon_id: findReact[0].icon_id,
-                                            comments: comments,
-                                        });
-                                    }
-                                    // console.log(comment_replis);
-                                    // comments.forEach((comment) => {
-                                    //     comment_replis.forEach((comment_reply) => {
-                                    //         if (comment.comment_id == comment_reply.comment_id) {
-                                    //             comment.reply = [comment_reply];
-                                    //         }
-                                    //     });
-                                    //     console.log(comment);
-                                    // });
+                                    });
+                                    db.execute(
+                                        Post_React.findReactWithPostId(postId),
+                                        (err, reacts) => {
+                                            if (findReact.length == 0) {
+                                                res.render("user/detail_post", {
+                                                    post: result[0],
+                                                    icon_id: 0,
+                                                    comments: comments,
+                                                    reacts: reacts,
+                                                });
+                                            } else {
+                                                res.render("user/detail_post", {
+                                                    post: result[0],
+                                                    icon_id: findReact[0].icon_id,
+                                                    comments: comments,
+                                                    reacts: reacts,
+                                                });
+                                            }
+                                        }
+                                    );
                                 }
                             );
-                            // if react == 0
-                            // if (findReact.length == 0) {
-                            //     res.render("user/detail_post", {
-                            //         post: result[0],
-                            //         icon_id: 0,
-                            //         comments: comments,
-                            //     });
-                            // } else {
-                            //     res.render("user/detail_post", {
-                            //         post: result[0],
-                            //         icon_id: findReact[0].icon_id,
-                            //         comments: comments,
-                            //     });
-                            // }
                         }
                     );
                 });
@@ -172,6 +164,17 @@ class PostsController {
                 res.redirect("back");
             }
         );
+    }
+    deleteComment(req, res, next) {
+        let commentId = req.params.comment_id;
+        //delete reply comment
+        console.log("conmment oid" + commentId);
+        db.execute(Post_comment_replies.delete(commentId), (err, result) => {
+            //delete  comment
+            db.execute(Post_Comment.delete(commentId), (err, result) => {
+                res.redirect("back");
+            });
+        });
     }
 }
 module.exports = new PostsController();
