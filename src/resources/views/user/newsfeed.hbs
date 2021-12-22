@@ -1,22 +1,23 @@
 {{>header}}
 <script src = "../../../public/script/display_img.js"></script>
 <div class="container-user newsfeed-container center">
-    <div class="post-add container">
-        <div class="card" style="margin-top:100px; background-color:#2b2b36">
+  <main id="main">
+    {{!-- <div class="post-add">
+        <div class="post-card">
         <div class="card-content ">
           <div class="row">
-             <form class="col s12" action="/newsfeed/newPost" method="post"  enctype="multipart/form-data">
+             <form class="col" action="/newsfeed/newPost" method="post"  enctype="multipart/form-data">
                <div class="row">
-                <div class="col s4">
+                <div class="col">
                    <img style="height:100px"src="../uploads/{{avatar}}"  alt="">
                 </div>
-                <div class="input-field col s8">
+                <div class="input-field col">
                   <textarea id="textarea1" class="materialize-textarea post-input-newsfeed" name="post_content" required></textarea>
                    <label for="textarea1">@{{username}}, What are you thinking ?</label>
                  </div>
                 </div>
                     <div class="row">    
-                    <div class="file-field input-field col s1 m1 push-l4" id="wrapper">
+                    <div class="file-field input-field col push-l4" id="wrapper">
                        
                      <div class="btn btn-active">
                         <span> <i class="material-icons">image</i></span>  
@@ -39,12 +40,47 @@
           </div>
         </div>
       </div>
+    </div> --}}
+    <div class="post-add post-card">
+      <form action="/newsfeed/newPost" method="post"  enctype="multipart/form-data">
+        <div class="row">
+          <div class="col s3 m3">
+              <img style="height:100px"src="../uploads/{{avatar}}"  alt="">
+          </div>
+          <div class="input-field col s9 m9">
+            <textarea id="textarea1" class="materialize-textarea post-input-newsfeed" name="post_content" required></textarea>
+              <label for="textarea1">@{{username}}, What are you thinking ?</label>
+          </div>
+        </div>
+        <div class="row">    
+          <div class="file-path-wrapper">
+            <input hidden  class="file-path validate" type="text" value="" >
+          </div>
+          <div class="file-field input-field" id="wrapper" >
+            <div id="image-holder"></div>
+            
+            <div class="d-flex" >
+              <div class="left">
+                <label class="btn btn-active" for="fileUpload"> <i class="material-icons">image</i></span>  
+                <input  id="fileUpload"  type="file" name="image" multiple="multiple" >
+              </div>
+              <div class="right">
+                <a class=" btn btn-active btn-post-video modal-trigger" href="#post-video-modal"> <i class="material-icons">video_call</i></a>
+              </div>
+            </div>
+          </div>  
+        </div>               
+        <div class="card-action">
+          <button class="btn btn-active" type="submit">Post</button>
+        </div>
+      </form>
     </div>
-  <main id="main">
+
+
     {{#each posts}}
           {{!-- <iframe width="420" height="345" src="//www.youtube.com//egSxAF-Sak4?autoplay=1"> --}}
 
-</iframe>
+{{!-- </iframe> --}}
     <div id="to-scroll-when-comment" class="post-card">
       <div class="post-info">
         <div class="left">
