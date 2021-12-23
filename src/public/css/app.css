@@ -891,7 +891,7 @@ body {
   background: var(--secondary-background);
   padding: 50px;
   padding-top: 70px;
-  color: var(--primary-color) !important;
+  /* color: var(--primary-color) !important; */
 }
 
 #sidenav-open nav {
