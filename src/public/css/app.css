@@ -931,8 +931,8 @@ body {
   padding-top: 100px;
   width: 100%;
 }
-#sidenav-open a {
-  color: var(--primary-color) !important;
+#sidenav-open a:not(.btn-active) {
+  color: var(--primary-color);
 }
 
 /* --------------------- newsfeed --------------------- */
@@ -1286,12 +1286,35 @@ body {
 
 .message-container {
   text-align: right;
+  /* background-color: var(--secondary-color); */
+}
+
+.message-container h1 {
+  font-size: 1rem;
+  padding: 10px;
+  background-color: var(--secondary-color);
+  display: inline-block;
+  border-radius: 10px;
+  color: var(--color-on-dark-bg);
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.message-container-receive h1 {
+  font-size: 1rem;
+  padding: 10px;
+  background-color: var(--secondary-color);
+  display: inline-block;
+  border-radius: 10px;
+  color: var(--color-on-dark-bg);
+  margin: 0 auto;
+  margin-top: 15px;
 }
 
 .text-message {
   color: var(--primary-color);
   display: inline-block;
-  background-color: #26272e;
+  background-color: var(--secondary-color);
   padding: 10px 20px;
   border-radius: 10px;
   margin: 0;
