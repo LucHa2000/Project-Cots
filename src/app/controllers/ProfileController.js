@@ -23,7 +23,12 @@ class ProfileController {
                         });
                     });
                     // console.log(posts);
-                    res.render("user/profile", { posts: posts });
+                    db.execute(
+                        Accounts.findByTag("username", username),
+                        (err, result) => {
+                            res.render("user/profile", { posts: posts, account: result[0] });
+                        }
+                    );
                 }
             );
         });
