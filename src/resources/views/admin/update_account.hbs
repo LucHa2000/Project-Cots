@@ -1,0 +1,84 @@
+{{>header_admin}}
+<div class="container ">
+    <h4 class="center">Edit Account Information</h4>
+    <div class="paper_container z-depth-1">
+ <form class="col s12"  method="POST" action="/account/{{account.username}}/edit?_method=PATCH">
+    
+      <div class="row">
+        <div class="input-field col s6 ">
+          <input  id="first_name" type="text" class="validate" name="first_name" value="{{account.first_name}}">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6 ">
+          <input  id="last_name" type="text" class="validate" name="last_name" value="{{account.last_name}}">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 ">
+          <select name='gender'>
+            <option value="0" {{falseSelected account.gender}}>Female</option>
+            <option value="1" {{trueSelected account.gender}}>Male</option>
+        </select>
+        <label>Gender</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input  id="username" type="text" class="validate" name="username" value="{{account.username}}">
+          <label for="first_name">Username</label>
+        </div>
+      </div>
+          <input type="Number"  hidden name="acc_status" value="{{account.acc_status}}">
+          <input type="Number"  hidden name="accountType" value="{{account.acc_type_id}}">
+          <div class="row">
+        <div class="input-field col s12 ">
+          <input id="email" type="email" class="validate" name="email" value="{{account.email}}" required="required">
+          <label for="email">Email</label>
+            <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+        </div>
+      </div>
+    <div class="row">
+        <img src="/uploads/{{account.avatar}}" alt="" width="50px">
+        <div class="file-field input-field col s5 m6">
+            <div class="btn btn-active">
+            <span>Change avatar</span>
+            <input type="file" name="image">
+                </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" value="{{account.avatar}}" name="img_old">
+            </div>
+        </div>
+    </div>
+    
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input id="birthday" type="tel" class="datepicker validate" name="birthday" value="{{convertDate account.birthday}}" required="required">
+          <label for="birthday">Birthday</label>
+            <span class="helper-text" data-error="This field must be phone number" data-success=""></span>
+        </div>
+      </div>
+       <div class="row">
+        <div class="input-field col s12 ">
+          <input id="bio" type="Text" class="validate" name="bio" value="{{account.bio}}">
+          <label for="address">Bio</label>
+        </div>
+      </div>
+       <div class="row">
+        <div class="input-field col s12 ">
+        <input id="password"type="Text" class="validate" name="password" value="{{account.acc_password}}" required="required"/>
+          <label for="password">Password</label>
+            <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+        </div>
+      </div>
+       <button onclick="" class="btn btn-active waves-effect waves-light" type="submit">Update
+      </button>
+    </form> 
+    </div>
+     <br>
+  </div>
+  {{>footer_admin}}
+
+
+
+  

@@ -186,7 +186,7 @@
                     <a
                       data-position="top"
                       data-tooltip="Update"
-                      href="/admin/{{this._id}}"
+                      href="/admin/{{this.username}}"
                       class="btn btn-small tooltipped yellow darken-3 button-radius"
                     ><i class="material-icons">system_update_alt</i></a>&nbsp;
                     <a
@@ -201,8 +201,7 @@
               {{else}}
                 <tr>
                   <td colspan="6" class="center text-center">
-                    There is no accounts in database, please create new account
-                    on CREATE ACCOUNT tab
+                    Empty!
                   </td>
                 </tr>
               {{/each}}

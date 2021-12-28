@@ -41,6 +41,36 @@ class AccountController {
     );
   }
   deleteAccount(req, res, next) {
-    Account.deleteAccount();
+    db.execute(Account.deleteAccount(req.params.username), (err, result) => {
+      if (err) throw err;
+      res.redirect("back");
+    });
+  }
+
+  changeAccountStatus(req, res, next) {
+    req.params.status === 1
+      ? (req.body.acc_status = 0)
+      : (req.body.acc_status = 1);
+    db.execute(
+      Account.updateAccount(req.params.username, req.body.acc_status),
+      (err, result) => {
+        if (err) throw err;
+        res.redirect("back");
+      }
+    );
+  }
+
+  updateAccountPage(req, res, next) {
+    db.execute(
+      Account.findByTag("username", req.params.username),
+      (err, result) => {
+        if (err) throw err;
+        res.render("admin/update_account", {
+          account: result[0],
+        });
+      }
+    );
   }
 }
+
+module.exports = new AccountController();
