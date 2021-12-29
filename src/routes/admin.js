@@ -5,3 +5,4 @@ const accountController = require("../app/controllers/AccountController");
 router.get("/", adminController.index);
 router.get("/:username", accountController.updateAccountPage);
 module.exports = router;
+router.get("/:status/:username", accountController.changeAccountStatus);

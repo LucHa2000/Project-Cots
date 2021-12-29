@@ -70,7 +70,7 @@ class Account {
     return sql;
   }
   static updateAccountStatus(username, status) {
-    let sql = `update accounts set acc_status = ${status} where username = ${username}`;
+    let sql = `update accounts set acc_status = ${status} where username = '${username}'`;
     return sql;
   }
   static deleteAccount(username) {

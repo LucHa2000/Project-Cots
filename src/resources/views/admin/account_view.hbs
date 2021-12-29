@@ -176,12 +176,12 @@
                     <a
                       data-position="top"
                       data-tooltip="Status"
-                      href="/store/status/{{this.product_status}}/{{this._id}}"
+                      href="/admin/{{this.acc_status}}/{{this.username}}"
                       class="btn btn-small
-                        {{btnStatus this.product_status}}
+                        {{btnStatus this.acc_status}}
                         tooltipped blue-grey button-radius"
                     ><i class="material-icons">{{btnStatus
-                          this.product_status
+                          this.acc_status
                         }}</i></a>&nbsp;
                     <a
                       data-position="top"
@@ -193,7 +193,7 @@
                       data-position="top"
                       data-tooltip="Delete"
                       data-id="{{this.username}}"
-                      class="waves-effect waves-light btn btn-small tooltipped modal-trigger btn_delete red"
+                      class="waves-effect waves-light btn btn-small tooltipped modal-trigger btn_delete red {{accType this.acc_type_id}}"
                       href="#modal1"
                     ><i class="material-icons">delete</i></a>
                   </td>

@@ -48,13 +48,12 @@ class AccountController {
   }
 
   changeAccountStatus(req, res, next) {
-    req.params.status === 1
+    req.params.status == 1
       ? (req.body.acc_status = 0)
       : (req.body.acc_status = 1);
     db.execute(
-      Account.updateAccount(req.params.username, req.body.acc_status),
+      Account.updateAccountStatus(req.params.username, req.body.acc_status),
       (err, result) => {
-        if (err) throw err;
         res.redirect("back");
       }
     );

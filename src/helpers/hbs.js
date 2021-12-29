@@ -31,7 +31,8 @@ module.exports = {
   status: (a) => (a == 1 ? "Activity" : "Block"),
   followCustomer: (a) => (a == 1 ? "unfollow" : "follow"),
   followGroup: (a) => (a == 1 ? "leave" : "join"),
-  btnStatus: (a) => (a == 1 ? "block" : "check"),
+  btnStatus: (a) => (a == 0 ? "block" : "check"),
+  accType: (a) => (a == 1 ? "Admin " : "User"),
   sortable: (field, sort) => {
     const sortType = field == sort.column ? sort.type : "default";
     const icons = {
