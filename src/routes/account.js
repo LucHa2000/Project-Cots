@@ -6,4 +6,5 @@ const accountController = require("../app/controllers/AccountController");
 router.get("/addAccount", accountController.createAccount);
 router.get("/:username", accountController.updateAccountPage);
 router.patch("/:username/edit", accountController.updateAccount);
+router.post("/register", accountController.createAccount);
 module.exports = router;

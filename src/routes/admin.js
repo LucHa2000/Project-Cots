@@ -7,4 +7,5 @@ router.get("/:username", accountController.updateAccountPage);
 router.get("/:status/:username", accountController.changeAccountStatus);
 router.get("/:username/edit");
 router.get("/delete/:username", accountController.deleteAccount);
+router.post("/register", accountController.createAccount);
 module.exports = router;

@@ -3,39 +3,45 @@ const upload = multer({ dest: "src/public/uploads/" });
 const Account = require("../models/Account");
 const db = require("../../config/db");
 const { pagination } = require("../../util/pagination");
+var moment = require("moment");
 
 const quantityItem = 5;
 
 class AccountController {
   createAccount(req, res, next) {
+    let username = req.body.username;
+    let password = req.body.password;
+    let email = req.body.email;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let birthday = req.body.birthday;
+    let gender = req.body.gender;
+    let bio = req.body.bio;
+    let job = req.body.job;
+    let accStatus = 1;
+    let accType = 2;
+    let avatar = "default-avatar.jpg";
     db.execute(
       Account.findByTag("username", req.body.username),
       (err, result) => {
-        if (result.length >= 1) res.redirect("back");
+        if (result.length != 0) res.redirect("/error");
         else {
-          db.execute(
-            new Account(
-              req.body.username,
-              req.body.password,
-              req.body.email,
-              req.body.firstName,
-              req.body.lastName,
-              req.body.birthday,
-              req.body.gender,
-              req.body.bio,
-              req.body.job,
-              1,
-              2,
-              ""
-            ).save(),
-            (err, result) => {
-              if (err) throw err;
-              res.render("admin/account_view"),
-                {
-                  accounts: pagination(result, numberPage, quanittyItem),
-                };
-            }
+          let account = new Account(
+            username,
+            password,
+            email,
+            firstName,
+            lastName,
+            birthday,
+            gender,
+            bio,
+            job,
+            accStatus,
+            accType,
+            avatar
           );
+          account.save();
+          res.redirect("/admin");
         }
       }
     );
