@@ -78,7 +78,38 @@ class AccountController {
   }
 
   updateAccount(req, res, next) {
-    db.execute(Account.updateAccount());
+    let username = req.body.username;
+    let password = req.body.password;
+    let email = req.body.email;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let birthday = req.body.birthday;
+    let gender = req.body.gender;
+    let bio = req.body.bio;
+    let job = req.body.job;
+    let accStatus = 1;
+    let accType = 2;
+    if (!req.file) {
+      var avatar = req.body.img_old;
+    } else {
+      var avatar = req.file.path.split("\\").slice(3).join();
+    }
+    db.execute(
+      Account.updateAccount(
+        username,
+        password,
+        email,
+        firstName,
+        lastName,
+        birthday,
+        bio,
+        job,
+        avatar
+      ),
+      (err, result) => {
+        res.redirect("back");
+      }
+    );
   }
 }
 

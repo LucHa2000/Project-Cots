@@ -2,23 +2,23 @@
 <div class="container ">
     <h4 class="center">Edit Account Information</h4>
     <div class="paper_container z-depth-1">
- <form class="col s12"  method="POST" action="/account/{{account.username}}/edit?_method=PATCH">
+ <form class="col s12"  method="POST" action="/admin/{{account.username}}/edit" method="POST" enctype="multipart/form-data">
     
       <div class="row">
         <div class="input-field col s6 ">
-          <input  id="first_name" type="text" class="validate" name="first_name" value="{{account.first_name}}">
+          <input  id="first_name" type="text" class="validate" name="firstName" value="{{account.first_name}}">
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6 ">
-          <input  id="last_name" type="text" class="validate" name="last_name" value="{{account.last_name}}">
+          <input  id="last_name" type="text" class="validate" name="lastName" value="{{account.last_name}}">
           <label for="last_name">Last Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 ">
           <select name='gender'>
-            <option value="0" {{falseSelected account.gender}}>Female</option>
-            <option value="1" {{trueSelected account.gender}}>Male</option>
+            <option value="1" {{falseSelected account.gender}}>Female</option>
+            <option value="2" {{trueSelected account.gender}}>Male</option>
         </select>
         <label>Gender</label>
         </div>
@@ -26,10 +26,10 @@
       <div class="row">
         <div class="input-field col s12 ">
           <input  id="username" type="text" class="validate" name="username" value="{{account.username}}">
-          <label for="first_name">Username</label>
+          <label for="username">Username</label>
         </div>
       </div>
-          <input type="Number"  name="acc_status" value="{{account.acc_status}}">
+          <input type="Number" hidden  name="acc_status" value="{{account.acc_status}}">
           <input type="Number"  hidden name="accountType" value="{{account.acc_type_id}}">
           <div class="row">
         <div class="input-field col s12 ">
@@ -58,6 +58,12 @@
             <span class="helper-text" data-error="This field must be phone number" data-success=""></span>
         </div>
       </div>
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input id="job" type="Text" class="validate" name="job" value="{{account.job}}">
+          <label for="address">Job</label>
+        </div>
+      </div>
        <div class="row">
         <div class="input-field col s12 ">
           <input id="bio" type="Text" class="validate" name="bio" value="{{account.bio}}">
@@ -71,13 +77,12 @@
             <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
         </div>
       </div>
-       <button onclick="" class="btn btn-active waves-effect waves-light" type="submit">Update
+       <button onclick="return confirm('Are you sure update ?')" class="btn btn-active waves-effect waves-light" type="submit">Update
       </button>
     </form> 
     </div>
      <br>
   </div>
-  {{>footer_admin}}
 
 
 
