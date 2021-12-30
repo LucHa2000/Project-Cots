@@ -9,7 +9,6 @@ class AdminController {
   index(req, res, next) {
     var numberPage = req.query.Page || 1;
     db.execute(Account.findAll(), (err, result) => {
-      if (err) throw err;
       res.render("admin/account_view", {
         accounts: pagination(result, numberPage, quantityItem),
       });

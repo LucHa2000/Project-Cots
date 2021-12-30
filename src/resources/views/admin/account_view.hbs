@@ -14,7 +14,7 @@
       </div>
       <div id="add-account" class="col s12">
         <div class="paper_container z-depth-1">
-          <form class="col s12" action="/account/register" method="POST" autocomplete="off">
+          <form class="col s12" action="/admin/register" method="POST" autocomplete="off">
             <h4 class="center"></h4>
             <div class="row">
               <div class="input-field col s10 m10 push-l1">
@@ -50,10 +50,10 @@
               </div>
               <div class="input-field col s10 m10 push-l1">
                 <input
-                  id="first-name"
+                  id="firstname"
                   type="text"
                   class="validate"
-                  name="first-name"
+                  name="firstName"
                   required="required"
                 />
                 <label for="first-name">First name*</label>
@@ -68,7 +68,7 @@
                   id="last-name"
                   type="text"
                   class="validate"
-                  name="last-name"
+                  name="lastName"
                   required="required"
                 />
                 <label for="last-name">Last name*</label>
@@ -82,9 +82,9 @@
                 <input
                   id="birthday"
                   type="text"
-                  class="validate datepicker"
+                  class="datepicker"
                   name="birthday"
-                  required="required"
+                  required="required" format='yyyy-mm-dd'
                 />
                 <label for="birthday">Birthday*</label>
                 <span
@@ -176,24 +176,24 @@
                     <a
                       data-position="top"
                       data-tooltip="Status"
-                      href="/store/status/{{this.product_status}}/{{this._id}}"
+                      href="/admin/{{this.acc_status}}/{{this.username}}"
                       class="btn btn-small
-                        {{btnStatus this.product_status}}
+                        {{btnStatus this.acc_status}}
                         tooltipped blue-grey button-radius"
                     ><i class="material-icons">{{btnStatus
-                          this.product_status
+                          this.acc_status
                         }}</i></a>&nbsp;
                     <a
                       data-position="top"
                       data-tooltip="Update"
-                      href="/admin/{{this._id}}"
+                      href="/admin/{{this.username}}"
                       class="btn btn-small tooltipped yellow darken-3 button-radius"
                     ><i class="material-icons">system_update_alt</i></a>&nbsp;
                     <a
                       data-position="top"
                       data-tooltip="Delete"
                       data-id="{{this.username}}"
-                      class="waves-effect waves-light btn btn-small tooltipped modal-trigger btn_delete red"
+                      class="waves-effect waves-light btn btn-small tooltipped modal-trigger btn_delete red {{accType this.acc_type_id}}"
                       href="#modal1"
                     ><i class="material-icons">delete</i></a>
                   </td>
@@ -201,8 +201,7 @@
               {{else}}
                 <tr>
                   <td colspan="6" class="center text-center">
-                    There is no accounts in database, please create new account
-                    on CREATE ACCOUNT tab
+                    Empty!
                   </td>
                 </tr>
               {{/each}}
@@ -229,11 +228,14 @@
   </div>
 </div>
 <script>
-  $(document).ready(function(){ $('.tabs').tabs(); }); }); });
-  $(document).ready(function(){ $(".btn_delete").on("click", function(){ var
-  dataId = $(this).attr("data-id"); 
-  $(".delete-agree").attr("href", "/account/delete/"++dataId); // Set herf
-  value }); });
+  $(document).ready(function(){
+    $(".btn_delete").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".delete-agree").attr("href", "/admin/delete/"+dataId); // Set herf value
+    });
+  });
+</script>
+<script>
   function checkPasswordMatch(){
     var password = $('#password').val();
     var confirmPassword = $('#confirm-password').val();
@@ -245,8 +247,13 @@
   $(document).ready(function () {
     $('#password').onchange = checkPasswordMatch;
     $('#confirm-password').keyup(checkPasswordMatch);
-  }) 
-    
-  
-  
+    $(".btn_delete").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".delete-agree").attr("href", "/admin/delete/"+dataId); // Set herf value
+    });
+  });
+
+  $(document).ready(function(){
+    $('.datepicker').datepicker({format: 'yyyy-mm-dd'});
+  });
 </script>
