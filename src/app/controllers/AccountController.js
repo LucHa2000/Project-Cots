@@ -49,7 +49,7 @@ class AccountController {
 
   deleteAccount(req, res, next) {
     db.execute(Account.deleteAccount(req.params.username), (err, result) => {
-      res.redirect("back");
+      res.redirect("/admin");
     });
   }
 
