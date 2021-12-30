@@ -40,9 +40,9 @@ class AccountController {
       }
     );
   }
+
   deleteAccount(req, res, next) {
     db.execute(Account.deleteAccount(req.params.username), (err, result) => {
-      if (err) throw err;
       res.redirect("back");
     });
   }
@@ -69,6 +69,10 @@ class AccountController {
         });
       }
     );
+  }
+
+  updateAccount(req, res, next) {
+    db.execute(Account.updateAccount());
   }
 }
 

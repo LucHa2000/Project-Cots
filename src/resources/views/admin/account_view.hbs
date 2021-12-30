@@ -191,7 +191,7 @@
                     ><i class="material-icons">system_update_alt</i></a>&nbsp;
                     <a
                       data-position="top"
-                      data-tooltip="Delete"
+                      data-tooltip="Update"
                       data-id="{{this.username}}"
                       class="waves-effect waves-light btn btn-small tooltipped modal-trigger btn_delete red {{accType this.acc_type_id}}"
                       href="#modal1"
@@ -228,11 +228,7 @@
   </div>
 </div>
 <script>
-  $(document).ready(function(){ $('.tabs').tabs(); }); }); });
-  $(document).ready(function(){ $(".btn_delete").on("click", function(){ var
-  dataId = $(this).attr("data-id"); 
-  $(".delete-agree").attr("href", "/account/delete/"++dataId); // Set herf
-  value }); });
+  
   function checkPasswordMatch(){
     var password = $('#password').val();
     var confirmPassword = $('#confirm-password').val();
@@ -244,7 +240,13 @@
   $(document).ready(function () {
     $('#password').onchange = checkPasswordMatch;
     $('#confirm-password').keyup(checkPasswordMatch);
-  }) 
+  });
+  $(document).ready(function(){
+    $(".btn_delete").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".delete-agree").attr("href", "/admin/delete/"+dataId); // Set herf value
+    });
+  });
     
   
   

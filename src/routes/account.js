@@ -5,4 +5,5 @@ const upload = multer({ dest: "src/public/uploads/" });
 const accountController = require("../app/controllers/AccountController");
 router.get("/addAccount", accountController.createAccount);
 router.get("/:username", accountController.updateAccountPage);
+router.patch("/:username/edit", accountController.updateAccount);
 module.exports = router;

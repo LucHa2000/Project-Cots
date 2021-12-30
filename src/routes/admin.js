@@ -4,5 +4,7 @@ const adminController = require("../app/controllers/AdminController");
 const accountController = require("../app/controllers/AccountController");
 router.get("/", adminController.index);
 router.get("/:username", accountController.updateAccountPage);
-module.exports = router;
 router.get("/:status/:username", accountController.changeAccountStatus);
+router.get("/:username/edit");
+router.get("/delete/:username", accountController.deleteAccount);
+module.exports = router;
