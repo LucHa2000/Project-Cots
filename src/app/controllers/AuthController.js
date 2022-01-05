@@ -71,7 +71,7 @@ class AuthController {
                     Account.findByTag("username", username),
                     function(err, result) {
                         if (result.length != 0) {
-                            res.redirect("/error");
+                            res.redirect("back");
                         } else {
                             let newAccount = new Account(
                                 username,
@@ -118,6 +118,7 @@ class AuthController {
     sendMail(req, res, next) {
         let email = req.body.confirmEmail;
         db.execute(Account.findByTag("email", email), (err, result) => {
+            console.log("===== code day ne :D " + Random);
             if (result.length === 0) {
                 var transporter = nodemailer.createTransport({
                     host: "smtp.gmail.com",
