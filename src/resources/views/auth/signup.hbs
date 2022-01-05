@@ -1,3 +1,78 @@
+<div class="auth-bg">
+  <div class="auth-container">
+    <div class="left">
+      <div class="left-inner-container">
+        <div class="left-head">
+          <div class="left-card"><a href="/">
+              <span style="font-weight: 600;">INDOMINUS</span><br />NETWORK</a>
+          </div>
+          <hr class="left-hr" />
+          <div class="left-title">
+            <p class="sm-title">We are</p>
+            <h2 class="main-title">Invite only right now.</h2>
+            <p class="subtitle">10 Million+ people have joined our network.<br
+              />We invite you to join the trible</p>
+          </div>
+        </div>
+        <div class="left-foot">
+          <p>Already have an account?</p>
+          <a href="/auth">Sign in</a>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="right-inner-container">
+        <form action="/auth/register" method="POST">
+          <h4>Register</h4>
+          <label class="label" for="username">Username*</label>
+          <input
+            id="last_name"
+            type="text"
+            class="validate"
+            name="username"
+            required
+          />
+          <span
+            class="helper-text"
+            data-error="This field cannot be left blank"
+            data-success=""
+          ></span>
+
+          <label class="label" for="username">Password*</label>
+          <input
+            id="password"
+            type="password"
+            class="validate"
+            name="password"
+            minlength="6"
+            required
+          />
+          <span
+            class="helper-text"
+            data-error="Password minimum 6 characters"
+            data-success=""
+          ></span>
+
+          <label class="label" for="confirm_password">Confirm Password*</label>
+          <input
+            id="confirm_password"
+            type="password"
+            class="validate"
+            required
+          />
+          <span
+            class="helper-text"
+            data-error="Password doesn't match"
+            data-success=""
+          ></span>
+          <button class="btn-active btn-login" type="submit">Sign up
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{! 
 <div class="auth_container">
   <div class="container">
 
@@ -77,16 +152,16 @@
           </div>
         </form>
 
-      </div>
-      <script>
-        var password = document.getElementById("password") var confirm_password
-        = document.getElementById("confirm_password"); function
-        validatePassword(){ if(password.value != confirm_password.value) {
-        confirm_password.setCustomValidity("Passwords don't match"); } else {
-        confirm_password.setCustomValidity(''); } } password.onchange =
-        validatePassword; confirm_password.onkeyup = validatePassword;
-      </script>
-    </div>
+      </div> }}
+<script>
+  var password = document.getElementById("password") var confirm_password =
+  document.getElementById("confirm_password"); function validatePassword(){
+  if(password.value != confirm_password.value) {
+  confirm_password.setCustomValidity("Passwords don't match"); } else {
+  confirm_password.setCustomValidity(''); } } password.onchange =
+  validatePassword; confirm_password.onkeyup = validatePassword;
+</script>
+{{! </div>
   </div>
 
-</div>
+</div> }}
