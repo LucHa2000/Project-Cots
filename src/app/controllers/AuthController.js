@@ -137,7 +137,7 @@ class AuthController {
                 transporter.sendMail(mailMessage, function(error, data) {});
                 //res.cookie('code', Random);
                 req.session.code = Random;
-                // res.cookie('email', req.body.confirmEmail);
+                console.log("===== code day ne :D " + Random);
                 req.session.email = email;
                 res.cookie("message", "Check your email");
                 res.redirect("/auth/pageCode");
