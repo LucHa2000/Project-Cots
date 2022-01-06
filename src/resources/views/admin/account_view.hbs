@@ -177,8 +177,8 @@
                       data-position="top"
                       data-tooltip="Status"
                       href="/admin/{{this.acc_status}}/{{this.username}}"
-                      class="btn btn-small
-                        {{btnStatus this.acc_status}}
+                      class="btn btn-small 
+                        {{btnStatus this.acc_status}} {{btnStatusHidden this.acc_type_id}}
                         tooltipped blue-grey button-radius"
                     ><i class="material-icons">{{btnStatus
                           this.acc_status
@@ -189,7 +189,7 @@
                       href="/admin/{{this.username}}"
                       class="btn btn-small tooltipped yellow darken-3 button-radius"
                     ><i class="material-icons">system_update_alt</i></a>&nbsp;
-                    <a
+                    <a  onclick="return confirm('Are you sure you want to delete this account?')"
                       data-position="top"
                       data-tooltip="Delete"
                       data-id="{{this.username}}"
