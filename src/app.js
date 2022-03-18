@@ -56,67 +56,6 @@ app.set("views", path.join(__dirname, "resources/views"));
 server.listen(port, () => {
     console.log(` Server run at http://localhost:${port}`);
 });
-const arrayUser = [];
-const usersId = [];
 
-const arrayUserGroup = [];
-const userIdGroup = [];
-//check connect
-io.on("connection", (socket) => {
-    console.log("have a connect ID :" + socket.id);
 
-    // chat private
-    // listening  username
-    socket.on("user-name", (data) => {
-        arrayUser.push(data);
-        socket.Username = data;
-        usersId[data] = socket.id;
-        socket.emit("Server-success-regsiter", data);
-    });
-    //listening content
-    socket.on("content-message", (data) => {
-        var socketId = usersId[data.receiver];
-        io.to(socketId).emit("new-message-private", data);
-    });
-    //listening emotion
-    socket.on("content-emotion", (data) => {
-        var socketId = usersId[data.receiver];
-        io.to(socketId).emit("new-message-private-emotion", data);
-    });
-    //listening user write
-    socket.on("user-writing", (data) => {
-        socket.broadcast.emit("server-send-user-write", data);
-    });
-    //stop listening user write
-    socket.on("user-write-stop", (data) => {
-        io.sockets.emit("server-send-user-write-stop");
-    });
-
-    //chat group
-    var userMember = "";
-    //join group
-    socket.on("new-join", (data) => {
-        userMember = data;
-        if (arrayUserGroup.indexOf(data) == -1) {
-            arrayUserGroup.push(data);
-            socket.broadcast.emit("new-member-joined", data);
-            io.sockets.emit("list-member-joined", arrayUserGroup);
-        } else {
-            return;
-        }
-    });
-    //out group
-    socket.on("disconnect", (data) => {
-        arrayUserGroup.splice(arrayUserGroup.indexOf(userMember), 1);
-        io.sockets.emit("member-out-group", arrayUserGroup);
-    });
-    //listening content group
-    socket.on("content-message-group", (data) => {
-        socket.broadcast.emit("new-message-group", data);
-    });
-    //listening emotion
-    socket.on("content-emotion-group", (data) => {
-        socket.broadcast.emit("new-message-group-emotion", data);
-    });
-});
 route(app);
